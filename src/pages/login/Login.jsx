@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const [user, setUser] = useState({
@@ -7,6 +8,8 @@ export const Login = () => {
     password: "",
   });
   const { authState, handleLogin } = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -20,8 +23,7 @@ export const Login = () => {
       password: "abhinashbhengra123",
     }));
   };
-  console.log(authState);
-  console.log("token", authState.user);
+
   return (
     <>
       <h1>This is Login page.</h1>
@@ -44,7 +46,8 @@ export const Login = () => {
         />
         <button type="submit">Login</button>
         <p>
-          Don't have account ? <span>Sign up</span>
+          Don't have account ?{" "}
+          <span onClick={() => navigate("/signup")}>Sign up</span>
         </p>
         <p onClick={handleGuestLogin}>Add Guest Credentials</p>
       </form>
