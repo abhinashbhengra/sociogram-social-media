@@ -6,6 +6,7 @@ export const SideNavbar = () => {
       <div className="side-nav-main-container">
         <div className="side-logo-container">zepo</div>
         <div className="side-home">🏠</div>
+        <div className="side-search-container">🔍</div>
         <div className="side-explorer">🧭</div>
         <div className="side-create-post">➕</div>
         <div className="side-bookmarks">🔖</div>
