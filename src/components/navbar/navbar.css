@@ -1,11 +1,15 @@
 .top-nav-main-container {
+  background-color: #000000;
+  /* border-top: 1px solid #a8a8a8; */
+  border-bottom: 0.1px solid #666666;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   padding: 1rem 2rem;
 
-  position: absolute;
+  position: fixed;
   text-align: center;
   left: 0;
   right: 0;
@@ -13,7 +17,6 @@
 }
 
 .bottom-nav-main-container {
-  border: 1px solid red;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,9 +24,37 @@
 
   padding: 1.5rem 0;
 
-  position: absolute;
+  position: fixed;
   text-align: center;
   left: 0;
   right: 0;
   bottom: 0;
+
+  background-color: #000000;
+  border-top: 0.1px solid #666666;
+}
+
+.side-nav-main-container {
+  height: 100vh;
+  padding: 6rem 0;
+  display: none;
+
+  position: fixed;
+  text-align: center;
+  top: 0;
+  left: 0;
+
+  border-right: 0.1px solid #666666;
+}
+
+@media screen and (min-width: 768px) {
+  .top-nav-main-container {
+    display: none;
+  }
+  .bottom-nav-main-container {
+    display: none;
+  }
+  .side-nav-main-container {
+    display: block;
+  }
 }

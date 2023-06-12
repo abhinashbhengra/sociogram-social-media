@@ -1,0 +1,21 @@
+.home-main-container {
+  background-color: #000000;
+  color: #a5a5a5;
+}
+
+.feed-container {
+  padding: 5rem 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .home-main-container {
+    display: flex;
+    height: 100vh;
+    overflow-y: scroll;
+  }
+}
