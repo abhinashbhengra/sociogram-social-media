@@ -1,5 +1,3 @@
-import "./App.css";
-import logo from "./logo.png";
 import { Home } from "./pages/home/Home";
 import { Routes, Route } from "react-router-dom";
 import { Login } from "./pages/login/Login";

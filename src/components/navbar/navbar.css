@@ -1,0 +1,29 @@
+.top-nav-main-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 1rem 2rem;
+
+  position: absolute;
+  text-align: center;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.bottom-nav-main-container {
+  border: 1px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+
+  padding: 1.5rem 0;
+
+  position: absolute;
+  text-align: center;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
