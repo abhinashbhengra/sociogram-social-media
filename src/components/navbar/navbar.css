@@ -46,6 +46,9 @@
 
   border-right: 0.1px solid #666666;
 }
+.icon-text {
+  display: none;
+}
 
 @media screen and (min-width: 768px) {
   .top-nav-main-container {
@@ -55,6 +58,12 @@
     display: none;
   }
   .side-nav-main-container {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1264px) {
+  .icon-text {
     display: block;
   }
 }
