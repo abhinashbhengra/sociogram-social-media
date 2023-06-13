@@ -51,10 +51,10 @@ export function makeServer({ environment = "development" } = {}) {
       server.logging = false;
       users.forEach((item) =>
         server.create("user", {
-          ...item,
           followers: [],
           following: [],
           bookmarks: [],
+          ...item,
         })
       );
       posts.forEach((item) => server.create("post", { ...item }));
