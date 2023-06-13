@@ -3,6 +3,7 @@ import "./home.css";
 import { BottomNavbar } from "../../components/navbar/BottomNavbar";
 import { TopNavbar } from "../../components/navbar/TopNavbar";
 import { SideNavbar } from "../../components/navbar/SideNavbar";
+import { SuggestionTab } from "../../components/suggestion-tab/SuggestionTab";
 
 export const Home = () => {
   return (
@@ -37,7 +38,7 @@ export const Home = () => {
           <h3>feed3</h3>
           <h3>feed3</h3>
         </div>
-
+        <SuggestionTab />
         <BottomNavbar />
       </div>
     </>

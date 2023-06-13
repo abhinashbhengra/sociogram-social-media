@@ -1,0 +1,10 @@
+.suggestion-tab-main-container {
+  border: 1px solid red;
+  display: none;
+}
+
+@media screen and (min-width: 1160px) {
+  .suggestion-tab-main-container {
+    display: block;
+  }
+}
