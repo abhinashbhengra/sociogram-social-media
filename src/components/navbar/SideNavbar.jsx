@@ -11,10 +11,6 @@ export const SideNavbar = () => {
         <div className="side-create-post">➕</div>
         <div className="side-bookmarks">🔖</div>
         <div className="side-profile">👨‍🏫</div>
-        <div className="side-profile-details">
-          <p>Abhinash Bhengra</p>
-          <p>abhinashbhengra</p>
-        </div>
       </div>
     </>
   );
