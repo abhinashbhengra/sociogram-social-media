@@ -8,10 +8,12 @@ import { formatDate } from "../utils/authUtils";
 export const users = [
   {
     _id: uuid(),
-    firstName: "Abhinash",
-    lastName: "Bhengra",
+    fullName: "Abhinash Bhengra",
     username: "abhinashbhengra",
     password: "abhinashbhengra123",
+    bio: "Versatile",
+    website: "https://abhinashbhengra.netlify.app",
+    profileAvatar: "https://picsum.photos/id/334/150",
     createdAt: formatDate(),
     updatedAt: formatDate(),
     following: [
@@ -56,9 +58,9 @@ export const users = [
     following: [
       {
         _id: uuid(),
-        fullName: "Prashant Singh Chauhan",
-        username: "pareshaaaaan",
-        profileAvatar: "https://picsum.photos/id/1012/150",
+        fullName: "Abhinash Bhengra",
+        username: "abhinashbhengra",
+        profileAvatar: "https://picsum.photos/id/334/150",
       },
       {
         _id: uuid(),
@@ -76,9 +78,9 @@ export const users = [
       },
       {
         _id: uuid(),
-        fullName: "Prashant Singh Chauhan",
-        username: "pareshaaaaan",
-        profileAvatar: "https://picsum.photos/id/1012/150",
+        fullName: "Abhinash Bhengra",
+        username: "abhinashbhengra",
+        profileAvatar: "https://picsum.photos/id/334/150",
       },
     ],
   },
@@ -95,9 +97,9 @@ export const users = [
     following: [
       {
         _id: uuid(),
-        fullName: "Prashant Singh Chauhan",
-        username: "pareshaaaaan",
-        profileAvatar: "https://picsum.photos/id/1012/150",
+        fullName: "Abhinash Bhengra",
+        username: "abhinashbhengra",
+        profileAvatar: "https://picsum.photos/id/334/150",
       },
       {
         _id: uuid(),
@@ -128,9 +130,9 @@ export const users = [
     following: [
       {
         _id: uuid(),
-        fullName: "Prashant Singh Chauhan",
-        username: "pareshaaaaan",
-        profileAvatar: "https://picsum.photos/id/1012/150",
+        fullName: "Abhinash Bhengra",
+        username: "abhinashbhengra",
+        profileAvatar: "https://picsum.photos/id/334/150",
       },
       {
         _id: uuid(),
