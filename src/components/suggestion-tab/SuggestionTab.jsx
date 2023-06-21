@@ -32,22 +32,16 @@ export const SuggestionTab = () => {
     <>
       <div className="suggestion-tab-main-container">
         <p>Suggestion for you</p>
-        <div>
-          <p>Profile_name</p>
-          <span>Follow</span>
-        </div>
-        <div>
-          <p>Profile_name</p>
-          <span>Follow</span>
-        </div>
-        <div>
-          <p>Profile_name</p>
-          <span>Follow</span>
-        </div>
-        <div>
-          <p>Profile_name</p>
-          <span>Follow</span>
-        </div>
+        {suggestion.map((user) => (
+          <div className="suggestion-container">
+            <div className="suggestion-user-picture"></div>
+            <div className="suggestion-user-name-username">
+              <div className="suggestion-user-name">{user.fullName}</div>
+              <div className="suggestion-user-username">{user.username}</div>
+            </div>
+            <div className="suggestion-follow-button">Follow</div>
+          </div>
+        ))}
       </div>
     </>
   );

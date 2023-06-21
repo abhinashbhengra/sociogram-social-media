@@ -1,6 +1,31 @@
 .suggestion-tab-main-container {
   /* border: 1px solid red; */
+  padding-right: 3rem;
+
+  position: absolute;
+  right: 2rem;
+  top: 6rem;
+
   display: none;
+}
+.suggestion-container {
+  /* border: 1px solid purple; */
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 6px 2px;
+}
+
+.suggestion-user-picture {
+  height: 40px;
+  width: 40px;
+  background-color: #262626;
+  border-radius: 100px;
+}
+
+.suggestion-follow-button {
+  color: #0095f6;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 1160px) {
