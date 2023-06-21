@@ -1,22 +1,27 @@
 import "./navbar.css";
+import { Link } from "react-router-dom";
 
 export const SideNavbar = () => {
   return (
     <>
       <div className="side-nav-main-container">
         <div className="side-logo-container">zepo</div>
-        <div className="side-home">
-          <img src="../icons/home.svg" alt="home-logo" />
-          <span className="icon-text">Home</span>
-        </div>
+        <Link to="/" className="navLink">
+          <div className="side-home">
+            <img src="../icons/home.svg" alt="home-logo" />
+            <span className="icon-text">Home</span>
+          </div>
+        </Link>
         <div className="side-search-container">
           <img src="../icons/search.svg" alt="search-logo" />
           <span className="icon-text">Search</span>
         </div>
-        <div className="side-explorer">
-          <img src="../icons/explore.svg" alt="explore-logo" />
-          <span className="icon-text">Explore</span>
-        </div>
+        <Link to="/explore" className="navLink">
+          <div className="side-explorer">
+            <img src="../icons/explore.svg" alt="explore-logo" />
+            <span className="icon-text">Explore</span>
+          </div>
+        </Link>
         <div className="side-create-post">
           <img src="../icons/add.svg" alt="add-logo" />
           <span className="icon-text">create</span>

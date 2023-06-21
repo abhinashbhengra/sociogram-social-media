@@ -1,3 +1,27 @@
+.navLink {
+  text-decoration: none;
+}
+.navLink:focus {
+  text-decoration: none;
+  color: #a5a5a5;
+}
+.navLink:hover {
+  text-decoration: none;
+  color: #a5a5a5;
+}
+.navLink:visited {
+  text-decoration: none;
+  color: #a5a5a5;
+}
+.navLink:link {
+  text-decoration: none;
+  color: #a5a5a5;
+}
+.navLink:active {
+  text-decoration: none;
+  color: #a5a5a5;
+}
+
 .top-nav-main-container {
   background-color: #000000;
   /* border-top: 1px solid #a8a8a8; */
@@ -47,6 +71,7 @@
   border-right: 0.1px solid #262626;
   /* border: 1px solid red; */
 }
+
 .side-logo-container {
   margin-bottom: 34px;
   padding-left: 18px;
@@ -87,6 +112,7 @@
   margin-bottom: 8px;
   padding: 12px 3rem 12px 12px;
 }
+
 .side-explorer:hover {
   background-color: #262626;
   cursor: pointer;
