@@ -64,6 +64,7 @@
 }
 .side-home:hover {
   background-color: #262626;
+  cursor: pointer;
 }
 .side-search-container {
   display: flex;
@@ -74,6 +75,7 @@
 }
 .side-search-container:hover {
   background-color: #262626;
+  cursor: pointer;
 }
 .side-search-container img {
   width: 24px;
@@ -87,6 +89,7 @@
 }
 .side-explorer:hover {
   background-color: #262626;
+  cursor: pointer;
 }
 .side-explorer img {
   width: 24px;
@@ -100,6 +103,7 @@
 }
 .side-create-post:hover {
   background-color: #262626;
+  cursor: pointer;
 }
 .side-create-post img {
   width: 24px;
@@ -113,6 +117,7 @@
 }
 .side-bookmark:hover {
   background-color: #262626;
+  cursor: pointer;
 }
 .side-bookmark img {
   width: 16px;
@@ -132,6 +137,7 @@
 }
 .side-profile:hover {
   background-color: #262626;
+  cursor: pointer;
 }
 .icon-text {
   display: none;
