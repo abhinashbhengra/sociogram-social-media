@@ -36,7 +36,7 @@
 
 .side-nav-main-container {
   height: 100vh;
-  padding: 6rem 0;
+  padding: 3rem 0;
   display: none;
 
   position: fixed;
@@ -44,18 +44,36 @@
   top: 0;
   left: 0;
 
-  border-right: 0.1px solid #666666;
+  border-right: 0.1px solid #262626;
+  /* border: 1px solid red; */
+}
+.side-logo-container {
+  margin-bottom: 34px;
+  padding-left: 18px;
+  display: flex;
 }
 .side-home {
   display: flex;
   align-items: center;
+  gap: 1rem;
+  margin-bottom: 8px;
+  padding: 12px 3rem 12px 12px;
 }
 .side-home img {
   width: 26px;
 }
+.side-home:hover {
+  background-color: #262626;
+}
 .side-search-container {
   display: flex;
   align-items: center;
+  gap: 1rem;
+  margin-bottom: 8px;
+  padding: 12px 140px 12px 12px;
+}
+.side-search-container:hover {
+  background-color: #262626;
 }
 .side-search-container img {
   width: 24px;
@@ -63,6 +81,12 @@
 .side-explorer {
   display: flex;
   align-items: center;
+  gap: 1rem;
+  margin-bottom: 8px;
+  padding: 12px 3rem 12px 12px;
+}
+.side-explorer:hover {
+  background-color: #262626;
 }
 .side-explorer img {
   width: 24px;
@@ -70,26 +94,44 @@
 .side-create-post {
   display: flex;
   align-items: center;
+  gap: 1rem;
+  margin-bottom: 8px;
+  padding: 12px 3rem 12px 12px;
+}
+.side-create-post:hover {
+  background-color: #262626;
 }
 .side-create-post img {
   width: 24px;
 }
-.side-bookmarks {
+.side-bookmark {
   display: flex;
   align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 8px;
+  padding: 12px 3rem 12px 12px;
 }
-.side-bookmarks img {
+.side-bookmark:hover {
+  background-color: #262626;
+}
+.side-bookmark img {
   width: 16px;
 }
 .side-profile {
   display: flex;
   align-items: center;
+  gap: 1rem;
+  margin-bottom: 8px;
+  padding: 12px 3rem 12px 8px;
 }
 .side-profile-pic {
   height: 30px;
   width: 30px;
   background-color: #262626;
   border-radius: 100px;
+}
+.side-profile:hover {
+  background-color: #262626;
 }
 .icon-text {
   display: none;
