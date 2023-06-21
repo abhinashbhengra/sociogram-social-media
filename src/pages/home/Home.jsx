@@ -5,17 +5,30 @@ import { TopNavbar } from "../../components/navbar/TopNavbar";
 import { SideNavbar } from "../../components/navbar/SideNavbar";
 import { SuggestionTab } from "../../components/suggestion-tab/SuggestionTab";
 import { PostCard } from "../../components/post-card/PostCard";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 export const Home = () => {
   const [posts, setPosts] = useState([]);
+  const { authState } = useContext(AuthContext);
+  const { user } = authState;
+  const { following } = user;
+
+  const followingUserPost = posts.filter((post) => {
+    return following.some(
+      (followingUser) => followingUser.username === post.username
+    );
+  });
+
+  const userPost = posts?.filter((post) => post.username === user.username);
+
+  const allPost = [...userPost, ...followingUserPost];
 
   useEffect(() => {
     const getPost = async () => {
       try {
         const response = await fetch("/api/posts");
         const data = await response.json();
-        console.log(data.posts);
         setPosts(data.posts);
       } catch (e) {
         console.log(e);
@@ -23,6 +36,12 @@ export const Home = () => {
     };
     getPost();
   }, []);
+
+  // console.log("home-post", posts);
+  // console.log("user", user);
+  // console.log("fol-post", followingUserPost);
+  console.log("user-post", userPost);
+
   return (
     <>
       <div className="home-main-container">
@@ -48,7 +67,7 @@ export const Home = () => {
               height="25px"
             />
           </div>
-          {posts.map((post) => (
+          {allPost?.map((post) => (
             <PostCard key={post._id} post={post} />
           ))}
         </div>
