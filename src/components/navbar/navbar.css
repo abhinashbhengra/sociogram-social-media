@@ -46,6 +46,51 @@
 
   border-right: 0.1px solid #666666;
 }
+.side-home {
+  display: flex;
+  align-items: center;
+}
+.side-home img {
+  width: 26px;
+}
+.side-search-container {
+  display: flex;
+  align-items: center;
+}
+.side-search-container img {
+  width: 24px;
+}
+.side-explorer {
+  display: flex;
+  align-items: center;
+}
+.side-explorer img {
+  width: 24px;
+}
+.side-create-post {
+  display: flex;
+  align-items: center;
+}
+.side-create-post img {
+  width: 24px;
+}
+.side-bookmarks {
+  display: flex;
+  align-items: center;
+}
+.side-bookmarks img {
+  width: 16px;
+}
+.side-profile {
+  display: flex;
+  align-items: center;
+}
+.side-profile-pic {
+  height: 30px;
+  width: 30px;
+  background-color: #262626;
+  border-radius: 100px;
+}
 .icon-text {
   display: none;
 }
