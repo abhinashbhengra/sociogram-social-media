@@ -1,0 +1,51 @@
+.post-main-container {
+  /* border: 1px solid red; */
+  width: 100%;
+  padding: 1.5rem 0;
+  margin-bottom: 6rem;
+  border-bottom: 1px solid #262626;
+}
+.post-head {
+  /* border: 1px solid purple; */
+  display: flex;
+  gap: 1rem;
+  padding: 6px 2px;
+}
+
+.user-picture {
+  height: 40px;
+  width: 40px;
+  background-color: #262626;
+  border-radius: 100px;
+}
+
+.post-content-container {
+  padding: 12px 2px;
+}
+
+.post-content {
+  padding: 12px 0;
+}
+.post-image {
+  width: 100%;
+}
+
+.post-foot {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.post-like > img {
+  width: 30px;
+  cursor: pointer;
+}
+
+.post-comment > img {
+  width: 30px;
+  cursor: pointer;
+}
+
+.post-bookmark > img {
+  width: 36px;
+  cursor: pointer;
+}
