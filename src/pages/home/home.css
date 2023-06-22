@@ -11,10 +11,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* border: 1px solid red; */
 }
 .create-post-container {
-  /* border: 0.1px solid #666666; */
   width: 100%;
   margin-top: 2rem;
   padding: 14px 0;
@@ -24,7 +22,6 @@
   align-items: center;
   gap: 1rem;
   margin-bottom: 14px;
-  /* border: 1px solid red; */
 }
 .post-input {
   width: 400px;
@@ -35,30 +32,32 @@
   color: #fff;
 }
 
+.create-post-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
 .image-file-input {
   display: none;
+  align-self: flex-end;
 }
 .upload-image-container {
   width: 28px;
   cursor: pointer;
 }
 
-.create-post-buttons {
-  /* border: 1px solid red; */
-  display: flex;
-  /* align-items: center; */
-}
 .feed-post-button {
-  /* height: 18px; */
-  background-color: #fff;
-  color: #000;
+  background-color: #0095f6;
+  color: #fff;
   border: none;
 
-  padding: 0 16px;
-  margin: 3px 0;
+  padding: 6px 16px;
   cursor: pointer;
 
   border-radius: 4px;
+  text-transform: capitalize;
 }
 
 .profile-picture {
