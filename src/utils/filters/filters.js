@@ -1,16 +1,16 @@
 export const filteredPosts = (post, sortBy) => {
   switch (sortBy) {
-    case "":
+    case "All":
       return post;
-    case "latest":
-      return [...post].sort(
-        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-      );
-    case "oldest":
+    case "Latest":
       return [...post].sort(
         (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
       );
-    case "trending":
+    case "Oldest":
+      return [...post].sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      );
+    case "Trending":
       return [...post].sort((a, b) => {
         const a_Details = a.comments.length + a.likes.likesCount;
         const b_Details = b.comments.length + b.likes.likesCount;
