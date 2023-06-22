@@ -82,6 +82,27 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+}
+
+.filters-main-container {
+  position: absolute;
+  right: 0;
+  padding: 6px 34px;
+  /* border: 1px solid purple; */
+  background-color: #262626;
+  text-align: center;
+}
+.filter-button {
+  padding: 6px 0;
+  cursor: pointer;
+}
+.filter-cancel-button {
+  width: 18px;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {
