@@ -68,7 +68,7 @@
   top: 0;
   left: 0;
 
-  border-right: 0.1px solid #262626;
+  border-right: 0.6px solid #373737;
   /* border: 1px solid red; */
 }
 
@@ -82,7 +82,7 @@
   align-items: center;
   gap: 1rem;
   margin-bottom: 8px;
-  padding: 12px 3rem 12px 12px;
+  padding: 12px 3rem 12px 20px;
 }
 .side-home img {
   width: 26px;
@@ -96,7 +96,7 @@
   align-items: center;
   gap: 1rem;
   margin-bottom: 8px;
-  padding: 12px 140px 12px 12px;
+  padding: 12px 140px 12px 20px;
 }
 .side-search-container:hover {
   background-color: #262626;
@@ -110,7 +110,7 @@
   align-items: center;
   gap: 1rem;
   margin-bottom: 8px;
-  padding: 12px 3rem 12px 12px;
+  padding: 12px 3rem 12px 20px;
 }
 
 .side-explorer:hover {
@@ -125,7 +125,7 @@
   align-items: center;
   gap: 1rem;
   margin-bottom: 8px;
-  padding: 12px 3rem 12px 12px;
+  padding: 12px 3rem 12px 20px;
 }
 .side-create-post:hover {
   background-color: #262626;
@@ -139,7 +139,7 @@
   align-items: center;
   gap: 1.5rem;
   margin-bottom: 8px;
-  padding: 12px 3rem 12px 12px;
+  padding: 12px 3rem 12px 20px;
 }
 .side-bookmark:hover {
   background-color: #262626;
@@ -153,7 +153,7 @@
   align-items: center;
   gap: 1rem;
   margin-bottom: 8px;
-  padding: 12px 3rem 12px 8px;
+  padding: 12px 3rem 12px 16px;
 }
 .side-profile-pic {
   height: 30px;
