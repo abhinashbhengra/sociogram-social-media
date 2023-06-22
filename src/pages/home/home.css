@@ -21,6 +21,7 @@
 }
 .profile-input-container {
   display: flex;
+  align-items: center;
   gap: 1rem;
   margin-bottom: 14px;
   /* border: 1px solid red; */
@@ -32,6 +33,32 @@
   outline: none;
   cursor: pointer;
   color: #fff;
+}
+
+.image-file-input {
+  display: none;
+}
+.upload-image-container {
+  width: 28px;
+  cursor: pointer;
+}
+
+.create-post-buttons {
+  /* border: 1px solid red; */
+  display: flex;
+  /* align-items: center; */
+}
+.feed-post-button {
+  /* height: 18px; */
+  background-color: #fff;
+  color: #000;
+  border: none;
+
+  padding: 0 16px;
+  margin: 3px 0;
+  cursor: pointer;
+
+  border-radius: 4px;
 }
 
 .profile-picture {

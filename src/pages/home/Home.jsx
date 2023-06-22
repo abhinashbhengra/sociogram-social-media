@@ -11,6 +11,7 @@ import { AuthContext } from "../../context/AuthContext";
 export const Home = () => {
   const [posts, setPosts] = useState([]);
   const [postInput, setPostInput] = useState("");
+  const [image, setImage] = useState(null);
   const { authState } = useContext(AuthContext);
   const { token } = authState;
   const { user } = authState;
@@ -28,6 +29,7 @@ export const Home = () => {
 
   const post = {
     content: postInput,
+    postImage: image,
     fullName: user.fullName,
   };
 
@@ -46,6 +48,11 @@ export const Home = () => {
     const data = await response.json();
     setPosts(data.posts);
     setPostInput("");
+    setImage(null);
+  };
+
+  const handleFileUploader = (e) => {
+    setImage(URL.createObjectURL(e.target.files[0]));
   };
 
   useEffect(() => {
@@ -81,8 +88,24 @@ export const Home = () => {
               </div>
             </div>
             <div className="create-post-buttons">
-              <button>Add photo</button>
-              <button onClick={handleCreatePost}>post</button>
+              <input
+                type="file"
+                name="file"
+                id="file"
+                className="image-file-input"
+                onChange={handleFileUploader}
+              />
+              <label htmlFor="file">
+                <img
+                  className="upload-image-container"
+                  src="./icons/image-upload.svg"
+                  alt="image-logo"
+                />
+              </label>
+
+              <button className="feed-post-button" onClick={handleCreatePost}>
+                post
+              </button>
             </div>
           </div>
           <div className="user-feed-filter-container">
