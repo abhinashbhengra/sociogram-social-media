@@ -52,7 +52,9 @@ export const Home = () => {
   };
 
   const handleFileUploader = (e) => {
-    setImage(URL.createObjectURL(e.target.files[0]));
+    e.target.files[0] === undefined
+      ? setImage(null)
+      : setImage(URL.createObjectURL(e.target.files[0]));
   };
 
   useEffect(() => {
