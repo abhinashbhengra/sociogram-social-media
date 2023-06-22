@@ -12,6 +12,7 @@ export const Home = () => {
   const [posts, setPosts] = useState([]);
   const [postInput, setPostInput] = useState("");
   const { authState } = useContext(AuthContext);
+  const { token } = authState;
   const { user } = authState;
   const { following } = user;
 
@@ -23,10 +24,28 @@ export const Home = () => {
 
   const userPost = posts?.filter((post) => post.username === user.username);
 
-  const allPost = [...userPost, ...followingUserPost];
+  const allPost = [...followingUserPost, ...userPost];
+
+  const post = {
+    content: postInput,
+    fullName: user.fullName,
+  };
 
   const inputHandler = (e) => {
     setPostInput(e.target.value);
+  };
+
+  const handleCreatePost = async () => {
+    const response = await fetch("/api/posts", {
+      method: "POST",
+      headers: {
+        authorization: token,
+      },
+      body: JSON.stringify({ postData: post }),
+    });
+    const data = await response.json();
+    setPosts(data.posts);
+    setPostInput("");
   };
 
   useEffect(() => {
@@ -63,7 +82,7 @@ export const Home = () => {
             </div>
             <div className="create-post-buttons">
               <button>Add photo</button>
-              <button>post</button>
+              <button onClick={handleCreatePost}>post</button>
             </div>
           </div>
           <div className="user-feed-filter-container">
@@ -75,7 +94,7 @@ export const Home = () => {
               height="25px"
             />
           </div>
-          {allPost?.map((post) => (
+          {allPost?.reverse().map((post) => (
             <PostCard key={post._id} post={post} />
           ))}
         </div>

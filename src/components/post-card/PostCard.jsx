@@ -11,7 +11,13 @@ export const PostCard = ({ post }) => {
             <div className="user-name">{fullName}</div>
             <div className="user-username">{username}</div>
           </div>
-          <div className="post-date">{createdAt}</div>
+          <div className="post-date">
+            {new Date(createdAt)
+              .toDateString()
+              .split(" ")
+              .slice(1, 4)
+              .join(" ")}
+          </div>
         </div>
         <div className="post-content-container">
           <div className="post-content">{content}</div>
