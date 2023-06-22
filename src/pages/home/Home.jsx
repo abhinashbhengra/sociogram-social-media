@@ -117,6 +117,7 @@ export const Home = () => {
               alt="filters-logo"
               width="25px"
               height="25px"
+              style={{ cursor: "pointer" }}
             />
           </div>
           {allPost?.reverse().map((post) => (
