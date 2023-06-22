@@ -30,7 +30,7 @@ export const SuggestionTab = () => {
       <div className="suggestion-tab-main-container">
         <p>Suggestion for you</p>
         {suggestion.map((user) => (
-          <div className="suggestion-container">
+          <div className="suggestion-container" key={user._id}>
             <div className="suggestion-user-picture"></div>
             <div className="suggestion-user-name-username">
               <div className="suggestion-user-name">{user.fullName}</div>
