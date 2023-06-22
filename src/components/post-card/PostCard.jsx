@@ -2,7 +2,6 @@ import "./postCard.css";
 
 export const PostCard = ({ post }) => {
   const { fullName, username, content, postImage, createdAt } = post;
-  console.log("post-card", createdAt);
   return (
     <>
       <div className="post-main-container">
