@@ -7,7 +7,6 @@ export const SuggestionTab = () => {
   const { user } = authState;
   const { following } = user;
   const [allUser, setAllUser] = useState([]);
-  console.log(authState);
 
   const suggestion = allUser
     .filter(({ _id }) => _id !== user._id)
@@ -26,8 +25,6 @@ export const SuggestionTab = () => {
     getUser();
   }, []);
 
-  console.log(suggestion);
-  // console.log(following);
   return (
     <>
       <div className="suggestion-tab-main-container">
