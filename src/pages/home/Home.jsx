@@ -26,7 +26,6 @@ export const Home = () => {
   const allPost = [...userPost, ...followingUserPost];
 
   const inputHandler = (e) => {
-    console.log(e.target.value);
     setPostInput(e.target.value);
   };
 
@@ -42,11 +41,6 @@ export const Home = () => {
     };
     getPost();
   }, []);
-
-  // console.log("home-post", posts);
-  // console.log("user", user);
-  // console.log("fol-post", followingUserPost);
-  console.log("user-post", userPost);
 
   return (
     <>
