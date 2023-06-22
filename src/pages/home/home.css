@@ -23,14 +23,23 @@
   display: flex;
   gap: 1rem;
   margin-bottom: 14px;
+  /* border: 1px solid red; */
+}
+.post-input {
+  width: 400px;
+}
+.post-input input {
+  outline: none;
+  cursor: pointer;
+  color: #fff;
 }
 
 .profile-picture {
-  height: 40px;
-  width: 40px;
+  height: 100px;
+  width: 10px;
   background-color: #262626;
-  border-radius: 100px;
-  /* border: 1px solid red; */
+  border-radius: 100%;
+  border: 1px solid purple;
 }
 
 .profile-input-container input {

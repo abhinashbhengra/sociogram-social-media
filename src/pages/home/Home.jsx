@@ -10,6 +10,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 export const Home = () => {
   const [posts, setPosts] = useState([]);
+  const [postInput, setPostInput] = useState("");
   const { authState } = useContext(AuthContext);
   const { user } = authState;
   const { following } = user;
@@ -23,6 +24,11 @@ export const Home = () => {
   const userPost = posts?.filter((post) => post.username === user.username);
 
   const allPost = [...userPost, ...followingUserPost];
+
+  const inputHandler = (e) => {
+    console.log(e.target.value);
+    setPostInput(e.target.value);
+  };
 
   useEffect(() => {
     const getPost = async () => {
@@ -51,7 +57,15 @@ export const Home = () => {
           <div className="create-post-container">
             <div className="profile-input-container">
               <div className="profile-picture"></div>
-              <input type="text" placeholder="what's happening?" />
+              <div className="post-input">
+                <input
+                  type="text"
+                  name="postInput"
+                  value={postInput}
+                  onChange={inputHandler}
+                  placeholder="what's happening?"
+                />
+              </div>
             </div>
             <div className="create-post-buttons">
               <button>Add photo</button>
