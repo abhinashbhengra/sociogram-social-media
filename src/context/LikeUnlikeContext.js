@@ -14,6 +14,7 @@ export const LikeUnlikeProvider = ({ children }) => {
   const { token } = authState;
 
   const likeThePost = async (postId) => {
+    console.log(postId);
     const likedItems = await likePost(token, postId);
     setLikeUnlikeItems(likedItems);
   };
