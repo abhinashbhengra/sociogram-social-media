@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import { AuthContext } from "./AuthContext";
 import { addItems } from "../utils/bookmark/addToBookmark";
+import { removeItems } from "../utils/bookmark/removeFromBookmark";
 
 export const BookmarkContext = createContext({
   bookmarkState: {},
@@ -17,9 +18,15 @@ export const BookmarkProvider = ({ children }) => {
     setBookmark(addItems);
   };
 
+  const removeFromBookmark = async (postId) => {
+    const updatedItems = await removeItems(token, postId);
+    setBookmark(updatedItems);
+  };
+
   const value = {
     bookmark,
     addToBookmark,
+    removeFromBookmark,
   };
   return (
     <BookmarkContext.Provider value={value}>
