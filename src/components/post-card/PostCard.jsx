@@ -1,11 +1,22 @@
 import { useContext } from "react";
 import "./postCard.css";
 import { BookmarkContext } from "../../context/BookmarkContext";
+import { LikeUnlikeContext } from "../../context/LikeUnlikeContext";
+import { AuthContext } from "../../context/AuthContext";
 
 export const PostCard = ({ post }) => {
   const { fullName, username, content, postImage, createdAt } = post;
   const { bookmark, addToBookmark, removeFromBookmark } =
     useContext(BookmarkContext);
+  const { likeUnlikeItems, likeThePost, unlikeThePost } =
+    useContext(LikeUnlikeContext);
+  const { authState } = useContext(AuthContext);
+  const { user } = authState;
+
+  const selectedPost = likeUnlikeItems.find(({ _id }) => post._id);
+
+  const likedByUser = () =>
+    post.likes.likedBy.filter((user) => user._id === user._id).length !== 0;
 
   return (
     <>
@@ -32,7 +43,25 @@ export const PostCard = ({ post }) => {
         </div>
         <div className="post-foot">
           <div className="post-like">
-            <img src="../icons/like.svg" alt="like-icon" />
+            {}
+            {likedByUser() ? (
+              <div onClick={() => unlikeThePost(post._id)}>
+                <img
+                  src="../icons/filledheart.svg"
+                  alt="like-icon"
+                  className="post-like-image"
+                />
+                {}
+              </div>
+            ) : (
+              <div onClick={() => likeThePost(post._id)}>
+                <img
+                  src="../icons/heart.svg"
+                  alt="like-icon"
+                  className="post-like-image"
+                />
+              </div>
+            )}
           </div>
           <div className="post-comment">
             <img src="../icons/comment.svg" alt="comment-logo" />

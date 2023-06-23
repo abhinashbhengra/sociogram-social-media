@@ -8,6 +8,7 @@ import { PostCard } from "../../components/post-card/PostCard";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { filteredPosts } from "../../utils/filters/filters";
+import { LikeUnlikeContext } from "../../context/LikeUnlikeContext";
 
 export const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -20,6 +21,8 @@ export const Home = () => {
   const { following } = user;
 
   const [showFilter, setShowFilter] = useState(false);
+
+  const { likeUnlikeItems } = useContext(LikeUnlikeContext);
 
   const followingUserPost = posts.filter((post) => {
     return following.some(
@@ -64,7 +67,6 @@ export const Home = () => {
   };
 
   const handleSortByValue = (value) => {
-    // console.log(value);
     setSortBy(value);
     setShowFilter(false);
   };
@@ -72,6 +74,10 @@ export const Home = () => {
   const handleFiltersOption = () => {
     setShowFilter(true);
   };
+
+  useEffect(() => {
+    setPosts(likeUnlikeItems);
+  }, [likeUnlikeItems]);
 
   useEffect(() => {
     const getPost = async () => {
@@ -174,7 +180,7 @@ export const Home = () => {
             </div>
           </div>
           {sortedPost?.reverse().map((post) => (
-            <PostCard key={post._id} post={post} />
+            <PostCard key={post._id} post={post} user={user} />
           ))}
         </div>
         <SuggestionTab />

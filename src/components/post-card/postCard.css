@@ -35,8 +35,8 @@
   align-items: center;
   gap: 0.6rem;
 }
-.post-like > img {
-  width: 30px;
+.post-like-image {
+  width: 25px;
   cursor: pointer;
 }
 
