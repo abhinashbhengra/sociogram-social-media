@@ -28,5 +28,9 @@ export const LikeUnlikeProvider = ({ children }) => {
     likeThePost,
     unlikeThePost,
   };
-  return <LikeUnlikeContext value={value}>{children}</LikeUnlikeContext>;
+  return (
+    <LikeUnlikeContext.Provider value={value}>
+      {children}
+    </LikeUnlikeContext.Provider>
+  );
 };
