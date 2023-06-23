@@ -1,4 +1,4 @@
-export const addToBookmark = async (token, postId) => {
+export const addItems = async (token, postId) => {
   try {
     const response = await fetch(`/api/users/bookmark/${postId}`, {
       method: "POST",
