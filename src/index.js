@@ -6,6 +6,7 @@ import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { BookmarkProvider } from "./context/BookmarkContext";
+import { LikeUnlikeProvider } from "./context/LikeUnlikeContext";
 
 // Call make Server
 makeServer();
@@ -15,7 +16,9 @@ ReactDOM.render(
     <BrowserRouter>
       <AuthProvider>
         <BookmarkProvider>
-          <App />
+          <LikeUnlikeProvider>
+            <App />
+          </LikeUnlikeProvider>
         </BookmarkProvider>
       </AuthProvider>
     </BrowserRouter>
