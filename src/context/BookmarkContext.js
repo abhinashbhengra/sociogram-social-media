@@ -15,7 +15,7 @@ export const BookmarkProvider = ({ children }) => {
 
   const addToBookmark = async (postId) => {
     const addedItems = await addItems(token, postId);
-    setBookmark(addItems);
+    setBookmark(addedItems);
   };
 
   const removeFromBookmark = async (postId) => {
