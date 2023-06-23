@@ -56,6 +56,19 @@ export const editUserHandler = function (schema, request) {
       );
     }
     const { userData } = JSON.parse(request.requestBody);
+    console.log(
+      userData && userData.username && userData.username !== user.username
+    );
+    if (userData && userData.username && userData.username !== user.username) {
+      return new Response(
+        404,
+        {},
+        {
+          errors: ["Username cannot be changed"],
+        }
+      );
+    }
+
     user = { ...user, ...userData, updatedAt: formatDate() };
     this.db.users.update({ _id: user._id }, user);
     return new Response(201, {}, { user });
@@ -131,11 +144,17 @@ export const bookmarkPostHandler = function (schema, request) {
         { errors: ["This Post is already bookmarked"] }
       );
     }
-    user.bookmarks.push(post);
-    this.db.users.update(
-      { _id: user._id },
-      { ...user, updatedAt: formatDate() }
-    );
+    user.bookmarks.push({
+      _id: post._id,
+      username: post.username,
+      content: post.content,
+      createdAt: post.createdAt,
+      updatedAt: post.updatedAt,
+    });
+    // this.db.users.update(
+    //   { _id: user._id },
+    //   { ...user, updatedAt: formatDate() }
+    // );
     return new Response(200, {}, { bookmarks: user.bookmarks });
   } catch (error) {
     return new Response(
@@ -215,6 +234,17 @@ export const followUserHandler = function (schema, request) {
         }
       );
     }
+
+    if (user._id === followUser._id) {
+      return new Response(
+        404,
+        {},
+        {
+          errors: ["You cannot follow yourself"],
+        }
+      );
+    }
+
     const isFollowing = user.following.some(
       (currUser) => currUser._id === followUser._id
     );
