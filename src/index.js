@@ -5,6 +5,7 @@ import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
+import { BookmarkProvider } from "./context/BookmarkContext";
 
 // Call make Server
 makeServer();
@@ -13,7 +14,9 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <App />
+        <BookmarkProvider>
+          <App />
+        </BookmarkProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
