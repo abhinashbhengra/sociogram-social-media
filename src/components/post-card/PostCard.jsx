@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import "./postCard.css";
+import { BookmarkContext } from "../../context/BookmarkContext";
 
 export const PostCard = ({ post }) => {
   const { fullName, username, content, postImage, createdAt } = post;
+  const { bookmark, addToBookmark, removeFromBookmark } =
+    useContext(BookmarkContext);
+
   return (
     <>
       <div className="post-main-container">
@@ -33,7 +38,23 @@ export const PostCard = ({ post }) => {
             <img src="../icons/comment.svg" alt="comment-logo" />
           </div>
           <div className="post-bookmark">
-            <img src="../icons/bookmark.svg" alt="bookmark-logo" />
+            {bookmark.find(({ _id }) => _id === post._id) ? (
+              <div onClick={() => removeFromBookmark(post._id)}>
+                <img
+                  src="./icons/bookmark-filled.svg"
+                  alt="bookmark-logo"
+                  className="post-bookmark-image"
+                />
+              </div>
+            ) : (
+              <div onClick={() => addToBookmark(post._id)}>
+                <img
+                  src="./icons/bookmark.svg"
+                  alt="bookmark-logo"
+                  className="post-bookmark-image"
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>
