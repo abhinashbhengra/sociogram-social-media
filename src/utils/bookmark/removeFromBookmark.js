@@ -1,4 +1,4 @@
-export const removeFromBookmark = async (token, postId) => {
+export const removeItems = async (token, postId) => {
   try {
     const response = await fetch(`/api/users/remove-bookmark/${postId}`, {
       method: "POST",
