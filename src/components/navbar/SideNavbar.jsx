@@ -26,10 +26,12 @@ export const SideNavbar = () => {
           <img src="../icons/add.svg" alt="add-logo" />
           <span className="icon-text">create</span>
         </div>
-        <div className="side-bookmark">
-          <img src="../icons/bookmark.svg" alt="bookmark-logo" />
-          <span className="icon-text">bookmarks</span>
-        </div>
+        <Link to="/bookmark" className="navLink">
+          <div className="side-bookmark">
+            <img src="../icons/bookmark.svg" alt="bookmark-logo" />
+            <span className="icon-text">Bookmarks</span>
+          </div>
+        </Link>
         <div className="side-profile">
           <div className="side-profile-pic"></div>
           <span className="icon-text">profile</span>
