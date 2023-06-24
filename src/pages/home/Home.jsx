@@ -9,11 +9,11 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { filteredPosts } from "../../utils/filters/filters";
 import { LikeUnlikeContext } from "../../context/LikeUnlikeContext";
+import { CreatePost } from "../../components/create-post/CreatePost";
+import { PostContext } from "../../context/PostContext";
 
 export const Home = () => {
-  const [posts, setPosts] = useState([]);
-  const [postInput, setPostInput] = useState("");
-  const [image, setImage] = useState(null);
+  const { posts, setPosts } = useContext(PostContext);
   const [sortBy, setSortBy] = useState("All");
   const { authState } = useContext(AuthContext);
   const { token } = authState;
@@ -35,36 +35,6 @@ export const Home = () => {
   const allPost = [...followingUserPost, ...userPost];
 
   const sortedPost = filteredPosts(allPost, sortBy);
-
-  const post = {
-    content: postInput,
-    postImage: image,
-    fullName: user.fullName,
-  };
-
-  const inputHandler = (e) => {
-    setPostInput(e.target.value);
-  };
-
-  const handleCreatePost = async () => {
-    const response = await fetch("/api/posts", {
-      method: "POST",
-      headers: {
-        authorization: token,
-      },
-      body: JSON.stringify({ postData: post }),
-    });
-    const data = await response.json();
-    setPosts(data.posts);
-    setPostInput("");
-    setImage(null);
-  };
-
-  const handleFileUploader = (e) => {
-    e.target.files[0] === undefined
-      ? setImage(null)
-      : setImage(URL.createObjectURL(e.target.files[0]));
-  };
 
   const handleSortByValue = (value) => {
     setSortBy(value);
@@ -98,40 +68,8 @@ export const Home = () => {
         <TopNavbar />
         <SideNavbar />
         <div className="feed-container">
-          <div className="create-post-container">
-            <div className="profile-input-container">
-              <div className="profile-picture"></div>
-              <div className="post-input">
-                <input
-                  type="text"
-                  name="postInput"
-                  value={postInput}
-                  onChange={inputHandler}
-                  placeholder="what's happening?"
-                />
-              </div>
-            </div>
-            <div className="create-post-buttons">
-              <input
-                type="file"
-                name="file"
-                id="file"
-                className="image-file-input"
-                onChange={handleFileUploader}
-              />
-              <label htmlFor="file">
-                <img
-                  className="upload-image-container"
-                  src="./icons/image-upload.svg"
-                  alt="image-logo"
-                />
-              </label>
+          <CreatePost />
 
-              <button className="feed-post-button" onClick={handleCreatePost}>
-                post
-              </button>
-            </div>
-          </div>
           <div className="user-feed-filter-container">
             <p>{sortBy} Post</p>
             <img
