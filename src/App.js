@@ -15,7 +15,7 @@ function App() {
         <Route element={<RequiresAuth />}>
           <Route path="/" element={<Home />} />
           <Route path="/explore" element={<Explore />} />
-          <Route path="/bookmark" element={<Bookmark />} />
+          <Route path="/bookmarks" element={<Bookmark />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />

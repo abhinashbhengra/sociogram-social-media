@@ -26,7 +26,7 @@ export const SideNavbar = () => {
           <img src="../icons/add.svg" alt="add-logo" />
           <span className="icon-text">create</span>
         </div>
-        <Link to="/bookmark" className="navLink">
+        <Link to="/bookmarks" className="navLink">
           <div className="side-bookmark">
             <img src="../icons/bookmark.svg" alt="bookmark-logo" />
             <span className="icon-text">Bookmarks</span>
