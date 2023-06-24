@@ -22,7 +22,7 @@ export const Explore = () => {
       }
     };
     getPost();
-  }, []);
+  }, [posts]);
   return (
     <>
       <div className="home-main-container">
