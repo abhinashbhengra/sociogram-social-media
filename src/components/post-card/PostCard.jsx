@@ -13,7 +13,7 @@ export const PostCard = ({ post }) => {
   const { authState } = useContext(AuthContext);
   const { user } = authState;
 
-  const selectedPost = likeUnlikeItems.find(({ _id }) => post._id);
+  // const selectedPost = likeUnlikeItems.find(({ _id }) => post._id);
 
   const likedByUser = () =>
     post.likes.likedBy.filter((user) => user._id === user._id).length !== 0;
