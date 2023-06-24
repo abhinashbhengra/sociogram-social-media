@@ -5,24 +5,25 @@ import { TopNavbar } from "../../components/navbar/TopNavbar";
 import { SideNavbar } from "../../components/navbar/SideNavbar";
 import { SuggestionTab } from "../../components/suggestion-tab/SuggestionTab";
 import { PostCard } from "../../components/post-card/PostCard";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { PostContext } from "../../context/PostContext";
 
 export const Explore = () => {
-  const [posts, setPosts] = useState([]);
+  // const [posts, setPosts] = useState([]);
+  const { posts } = useContext(PostContext);
 
-  useEffect(() => {
-    const getPost = async () => {
-      try {
-        const response = await fetch("/api/posts");
-        const data = await response.json();
-        console.log(data.posts);
-        setPosts(data.posts);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    getPost();
-  }, [posts]);
+  // useEffect(() => {
+  //   const getPost = async () => {
+  //     try {
+  //       const response = await fetch("/api/posts");
+  //       const data = await response.json();
+  //       setPosts(data.posts);
+  //     } catch (e) {
+  //       console.log(e);
+  //     }
+  //   };
+  //   getPost();
+  // }, [posts]);
   return (
     <>
       <div className="home-main-container">

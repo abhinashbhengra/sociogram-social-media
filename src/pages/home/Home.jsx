@@ -24,7 +24,7 @@ export const Home = () => {
 
   const { likeUnlikeItems } = useContext(LikeUnlikeContext);
 
-  const followingUserPost = posts.filter((post) => {
+  const followingUserPost = posts?.filter((post) => {
     return following.some(
       (followingUser) => followingUser.username === post.username
     );
@@ -83,7 +83,6 @@ export const Home = () => {
             style={{ display: showFilter ? "block" : "none" }}
           >
             <div
-              value="All"
               className="filter-button"
               onClick={() => handleSortByValue("All")}
             >
@@ -115,7 +114,7 @@ export const Home = () => {
             />
           </div>
         </div>
-        {sortedPost?.reverse().map((post) => (
+        {sortedPost.reverse().map((post) => (
           <PostCard key={post._id} post={post} user={user} />
         ))}
       </div>

@@ -1,10 +1,45 @@
 import "./navbar.css";
+
 import { Link } from "react-router-dom";
+import Modal from "react-modal";
+import { useState } from "react";
+import { CreatePost } from "../create-post/CreatePost";
+
+const customStyles = {
+  overlay: {
+    backgroundColor: "rgba(0, 0, 0, 0.70)",
+  },
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    backgroundColor: "#262626",
+    color: "#a5a5a5",
+    width: 500,
+    height: 200,
+    overflow: "hidden",
+    border: "none",
+  },
+};
 
 export const SideNavbar = () => {
+  const [modalOpen, setModalOpen] = useState(false);
   return (
     <>
       <div className="side-nav-main-container">
+        <Modal
+          isOpen={modalOpen}
+          onRequestClose={() => setModalOpen(false)}
+          style={customStyles}
+          ariaHideApp={false}
+        >
+          <p>Create new post</p>
+          {/* <button onClick={() => setModalOpen(false)}>Close Modal</button> */}
+          <CreatePost close={setModalOpen} />
+        </Modal>
         <div className="side-logo-container">Sociogram</div>
         <Link to="/" className="navLink">
           <div className="side-home">
@@ -22,7 +57,8 @@ export const SideNavbar = () => {
             <span className="icon-text">Explore</span>
           </div>
         </Link>
-        <div className="side-create-post">
+
+        <div className="side-create-post" onClick={setModalOpen}>
           <img src="../icons/add.svg" alt="add-logo" />
           <span className="icon-text">create</span>
         </div>

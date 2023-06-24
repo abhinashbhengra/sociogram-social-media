@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { PostContext } from "../../context/PostContext";
 import { AuthContext } from "../../context/AuthContext";
 
-export const CreatePost = () => {
+export const CreatePost = ({ close }) => {
   const [postInput, setPostInput] = useState("");
   const [image, setImage] = useState(null);
 
@@ -41,13 +41,13 @@ export const CreatePost = () => {
     setPosts(data.posts);
     setPostInput("");
     setImage(null);
+    close(false);
   };
 
   return (
     <div className="create-post-main-container">
       <div className="create-post-container">
         <div className="profile-input-container">
-          <div className="profile-picture"></div>
           <div className="post-input">
             <input
               type="text"
