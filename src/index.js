@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { BookmarkProvider } from "./context/BookmarkContext";
 import { LikeUnlikeProvider } from "./context/LikeUnlikeContext";
+import { PostProvider } from "./context/PostContext";
 
 // Call make Server
 makeServer();
@@ -15,11 +16,13 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <BookmarkProvider>
-          <LikeUnlikeProvider>
-            <App />
-          </LikeUnlikeProvider>
-        </BookmarkProvider>
+        <PostProvider>
+          <BookmarkProvider>
+            <LikeUnlikeProvider>
+              <App />
+            </LikeUnlikeProvider>
+          </BookmarkProvider>
+        </PostProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
