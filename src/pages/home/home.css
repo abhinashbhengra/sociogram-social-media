@@ -1,6 +1,7 @@
 .home-main-container {
   background-color: #000000;
   color: #a5a5a5;
+  position: relative;
 }
 
 .feed-container {
@@ -15,11 +16,12 @@
 
 .user-feed-filter-container {
   width: 100%;
-  /* border: 1px solid red; */
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
+
+  margin-top: 1.5rem;
 }
 
 .filters-main-container {

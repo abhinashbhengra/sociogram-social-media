@@ -1,14 +1,22 @@
-.create-post-container {
-  border: 1px solid red;
+.create-post-main-container {
+  /* position: absolute; */
   width: 100%;
-  margin-top: 2rem;
+  height: 100vh;
+}
+
+.create-post-container {
+  width: 100%;
+  background-color: #000;
   padding: 14px 0;
+  border: 1px solid purple;
 }
 .profile-input-container {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  justify-content: space-between;
+  /* gap: 1rem; */
   margin-bottom: 14px;
+  /* border: 1px solid blue; */
 }
 .post-input {
   width: 400px;
@@ -22,7 +30,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10px;
+  padding: 0 6px;
+  /* border: 1px solid red; */
 }
 .image-file-input {
   display: none;

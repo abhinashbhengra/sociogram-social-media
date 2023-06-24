@@ -16,7 +16,7 @@ export const PostCard = ({ post }) => {
   // const selectedPost = likeUnlikeItems.find(({ _id }) => post._id);
 
   const likedByUser = () =>
-    post.likes.likedBy.filter((user) => user._id === user._id).length !== 0;
+    post?.likes?.likedBy?.filter((user) => user._id === user._id).length !== 0;
 
   return (
     <>

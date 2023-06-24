@@ -44,7 +44,7 @@ export const CreatePost = () => {
   };
 
   return (
-    <>
+    <div className="create-post-main-container">
       <div className="create-post-container">
         <div className="profile-input-container">
           <div className="profile-picture"></div>
@@ -79,6 +79,6 @@ export const CreatePost = () => {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };

@@ -63,67 +63,64 @@ export const Home = () => {
   }, []);
 
   return (
-    <>
-      <div className="home-main-container">
-        <TopNavbar />
-        <SideNavbar />
-        <div className="feed-container">
-          <CreatePost />
-
-          <div className="user-feed-filter-container">
-            <p>{sortBy} Post</p>
-            <img
-              src="https://ik.imagekit.io/u6itcrvxy/Social-Media-icons/filters-2-svgrepo-com__1_.svg?updatedAt=1686916215904"
-              alt="filters-logo"
-              width="25px"
-              height="25px"
-              style={{ cursor: "pointer" }}
-              onClick={handleFiltersOption}
-            />
+    <div className="home-main-container">
+      <TopNavbar />
+      <SideNavbar />
+      <div className="feed-container">
+        {/* <CreatePost /> */}
+        <div className="user-feed-filter-container">
+          <p>{sortBy} Post</p>
+          <img
+            src="https://ik.imagekit.io/u6itcrvxy/Social-Media-icons/filters-2-svgrepo-com__1_.svg?updatedAt=1686916215904"
+            alt="filters-logo"
+            width="25px"
+            height="25px"
+            style={{ cursor: "pointer" }}
+            onClick={handleFiltersOption}
+          />
+          <div
+            className="filters-main-container"
+            style={{ display: showFilter ? "block" : "none" }}
+          >
             <div
-              className="filters-main-container"
-              style={{ display: showFilter ? "block" : "none" }}
+              value="All"
+              className="filter-button"
+              onClick={() => handleSortByValue("All")}
             >
-              <div
-                value="All"
-                className="filter-button"
-                onClick={() => handleSortByValue("All")}
-              >
-                All
-              </div>
-              <div
-                className="filter-button"
-                onClick={() => handleSortByValue("Trending")}
-              >
-                Trending
-              </div>
-              <div
-                className="filter-button"
-                onClick={() => handleSortByValue("Latest")}
-              >
-                Latest
-              </div>
-              <div
-                className="filter-button"
-                onClick={() => handleSortByValue("Oldest")}
-              >
-                Oldest
-              </div>
-              <img
-                className="filter-cancel-button"
-                src="./icons/cancel.svg"
-                alt="cancel"
-                onClick={() => setShowFilter(false)}
-              />
+              All
             </div>
+            <div
+              className="filter-button"
+              onClick={() => handleSortByValue("Trending")}
+            >
+              Trending
+            </div>
+            <div
+              className="filter-button"
+              onClick={() => handleSortByValue("Latest")}
+            >
+              Latest
+            </div>
+            <div
+              className="filter-button"
+              onClick={() => handleSortByValue("Oldest")}
+            >
+              Oldest
+            </div>
+            <img
+              className="filter-cancel-button"
+              src="./icons/cancel.svg"
+              alt="cancel"
+              onClick={() => setShowFilter(false)}
+            />
           </div>
-          {sortedPost?.reverse().map((post) => (
-            <PostCard key={post._id} post={post} user={user} />
-          ))}
         </div>
-        <SuggestionTab />
-        <BottomNavbar />
+        {sortedPost?.reverse().map((post) => (
+          <PostCard key={post._id} post={post} user={user} />
+        ))}
       </div>
-    </>
+      <SuggestionTab />
+      <BottomNavbar />
+    </div>
   );
 };
