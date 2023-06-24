@@ -1,0 +1,60 @@
+.create-post-container {
+  border: 1px solid red;
+  width: 100%;
+  margin-top: 2rem;
+  padding: 14px 0;
+}
+.profile-input-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 14px;
+}
+.post-input {
+  width: 400px;
+}
+.post-input input {
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+}
+.create-post-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+.image-file-input {
+  display: none;
+  align-self: flex-end;
+}
+.upload-image-container {
+  width: 28px;
+  cursor: pointer;
+}
+.profile-picture {
+  height: 40px;
+  width: 40px;
+  background-color: #262626;
+  border-radius: 100%;
+  border: 1px solid purple;
+}
+.feed-post-button {
+  background-color: #0095f6;
+  color: #fff;
+  border: none;
+
+  padding: 6px 16px;
+  cursor: pointer;
+
+  border-radius: 4px;
+  text-transform: capitalize;
+}
+.profile-input-container input {
+  width: 100%;
+  background-color: #262626;
+  padding: 12px;
+  /* border: 0.1px solid #666666; */
+  border-radius: 8px;
+  border-style: none;
+}

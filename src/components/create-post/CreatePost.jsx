@@ -1,3 +1,4 @@
+import "./createPost.css";
 import { useContext, useState } from "react";
 import { PostContext } from "../../context/PostContext";
 import { AuthContext } from "../../context/AuthContext";
