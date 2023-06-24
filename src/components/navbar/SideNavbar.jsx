@@ -5,7 +5,7 @@ export const SideNavbar = () => {
   return (
     <>
       <div className="side-nav-main-container">
-        <div className="side-logo-container">zepo</div>
+        <div className="side-logo-container">Sociogram</div>
         <Link to="/" className="navLink">
           <div className="side-home">
             <img src="../icons/home.svg" alt="home-logo" />
