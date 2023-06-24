@@ -11,6 +11,11 @@ export const filteredPosts = (post, sortBy) => {
         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
       );
     case "Trending":
-      return [...post].sort((a, b) => b.likes.likesCount - a.likes.likesCount);
+      return [...post].sort(
+        (a, b) =>
+          a.likes.likeCount +
+          a.comments.length -
+          (b.likes.likeCount + b.comments.length)
+      );
   }
 };
