@@ -41,7 +41,7 @@ export const CreatePost = ({ close }) => {
     setPosts(data.posts);
     setPostInput("");
     setImage(null);
-    close(false);
+    close();
   };
 
   return (

@@ -27,6 +27,7 @@ const customStyles = {
 
 export const SideNavbar = () => {
   const [modalOpen, setModalOpen] = useState(false);
+
   return (
     <>
       <div className="side-nav-main-container">
@@ -37,7 +38,7 @@ export const SideNavbar = () => {
           ariaHideApp={false}
         >
           <p>Create new post</p>
-          {/* <button onClick={() => setModalOpen(false)}>Close Modal</button> */}
+
           <CreatePost close={setModalOpen} />
         </Modal>
         <div className="side-logo-container">Sociogram</div>
@@ -58,7 +59,7 @@ export const SideNavbar = () => {
           </div>
         </Link>
 
-        <div className="side-create-post" onClick={setModalOpen}>
+        <div className="side-create-post" onClick={() => setModalOpen(true)}>
           <img src="../icons/add.svg" alt="add-logo" />
           <span className="icon-text">create</span>
         </div>
