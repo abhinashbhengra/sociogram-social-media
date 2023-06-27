@@ -69,10 +69,12 @@ export const SideNavbar = () => {
             <span className="icon-text">Bookmarks</span>
           </div>
         </Link>
-        <div className="side-profile">
-          <div className="side-profile-pic"></div>
-          <span className="icon-text">profile</span>
-        </div>
+        <Link to="/profile" className="navLink">
+          <div className="side-profile">
+            <div className="side-profile-pic"></div>
+            <span className="icon-text">Profile</span>
+          </div>
+        </Link>
       </div>
     </>
   );
