@@ -7,17 +7,23 @@ import { SuggestionTab } from "../../components/suggestion-tab/SuggestionTab";
 import { PostCard } from "../../components/post-card/PostCard";
 import { useContext, useEffect, useState } from "react";
 import { PostContext } from "../../context/PostContext";
+import { AuthContext } from "../../context/AuthContext";
 
 export const Profile = () => {
   const { posts } = useContext(PostContext);
+  const { authState } = useContext(AuthContext);
+  const { user } = authState;
+
+  const filteredPosts = posts.filter((post) => post.username === user.username);
 
   return (
     <>
       <div className="home-main-container">
         <TopNavbar />
         <SideNavbar />
-        <div className="feed-container">
-          {posts.map((post) => (
+
+        <div className="post-container">
+          {filteredPosts.map((post) => (
             <PostCard key={post._id} post={post} />
           ))}
         </div>
