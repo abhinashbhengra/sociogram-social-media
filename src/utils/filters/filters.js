@@ -1,4 +1,6 @@
 export const filteredPosts = (post, sortBy) => {
+  console.log("post", post);
+  console.log("filter by", sortBy);
   switch (sortBy) {
     case "All":
       return post;
@@ -11,11 +13,6 @@ export const filteredPosts = (post, sortBy) => {
         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
       );
     case "Trending":
-      return [...post].sort(
-        (a, b) =>
-          a.likes.likeCount +
-          a.comments.length -
-          (b.likes.likeCount + b.comments.length)
-      );
+      return [...post].sort((a, b) => a.likes.likeCount - b.likes.likeCount);
   }
 };
