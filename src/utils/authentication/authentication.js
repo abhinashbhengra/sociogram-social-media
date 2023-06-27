@@ -23,3 +23,20 @@ export const signup = async (user) => {
     console.log(e);
   }
 };
+
+export const editUser = async (userData, token) => {
+  try {
+    const response = await fetch("/api/users/edit", {
+      method: "POST",
+      headers: {
+        authorization: token,
+      },
+      body: JSON.stringify({ userData }),
+    });
+    const data = await response.json();
+    console.log("auth.js", data);
+    return data.user;
+  } catch (e) {
+    console.log(e);
+  }
+};
