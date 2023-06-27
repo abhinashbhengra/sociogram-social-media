@@ -34,7 +34,6 @@ export const editUser = async (userData, token) => {
       body: JSON.stringify({ userData }),
     });
     const data = await response.json();
-    console.log("auth.js", data);
     return data.user;
   } catch (e) {
     console.log(e);
