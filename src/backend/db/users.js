@@ -13,7 +13,8 @@ export const users = [
     password: "abhinashbhengra123",
     bio: "Versatile",
     website: "https://abhinashbhengra.netlify.app",
-    profileAvatar: "https://picsum.photos/id/334/150",
+    profileAvatar:
+      "https://ik.imagekit.io/u6itcrvxy/Avator/ava_04.png?updatedAt=1687861494883",
     createdAt: formatDate(),
     updatedAt: formatDate(),
     following: [
