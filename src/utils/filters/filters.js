@@ -1,6 +1,4 @@
 export const filteredPosts = (post, sortBy) => {
-  console.log("post", post);
-  console.log("filter by", sortBy);
   switch (sortBy) {
     case "All":
       return post;

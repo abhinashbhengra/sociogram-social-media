@@ -62,8 +62,6 @@ export const Home = () => {
     getPost();
   }, []);
 
-  console.log(sortedPost);
-
   return (
     <div className="home-main-container">
       <TopNavbar />
