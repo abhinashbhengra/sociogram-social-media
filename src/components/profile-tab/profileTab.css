@@ -1,0 +1,97 @@
+.profile-tab-main-container {
+  /* border: 1px solid red; */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-bottom: 3rem;
+  margin-bottom: 2rem;
+  border-bottom: 0.6px solid #373737;
+}
+.profile-section-picture {
+  /* border: 1px solid purple; */
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+.profile-section-picture img {
+  width: 100%;
+}
+.profile-details-container {
+  /* border: 1px solid teal; */
+  width: 100%;
+  padding-left: 2rem;
+}
+.profile-username-edit-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.post-followers-following-container {
+  display: flex;
+  gap: 2rem;
+}
+.website-link a:active {
+  text-decoration: none;
+  color: #a5a5a5;
+}
+.website-link a:link {
+  text-decoration: none;
+  color: #a5a5a5;
+}
+
+.website-link a:visited {
+  text-decoration: none;
+  color: #a5a5a5;
+}
+
+.website-link a:hover {
+  text-decoration: none;
+  color: #a5a5a5;
+}
+
+.website-link a:active {
+  text-decoration: none;
+  color: #a5a5a5;
+}
+.bio-edit-container textarea {
+  height: 15px;
+}
+
+/* Modal Style */
+.edit-user-profile-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-picture-edit-container {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+.edit-picture {
+  width: 50px;
+  height: 50px;
+  /* border: 1px solid purple; */
+  border-radius: 100%;
+  overflow: hidden;
+}
+.edit-picture img {
+  width: 100%;
+}
+.website-edit-container {
+  display: flex;
+  gap: 2rem;
+}
+.website-edit-container input {
+  width: 100%;
+}
+.bio-edit-container {
+  display: flex;
+  gap: 4rem;
+}
+.save-button {
+  margin-top: 2rem;
+  align-self: flex-end;
+}

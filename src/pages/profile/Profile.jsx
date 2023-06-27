@@ -8,6 +8,7 @@ import { PostCard } from "../../components/post-card/PostCard";
 import { useContext, useEffect, useState } from "react";
 import { PostContext } from "../../context/PostContext";
 import { AuthContext } from "../../context/AuthContext";
+import { ProfileTab } from "../../components/profile-tab/ProfileTab";
 
 export const Profile = () => {
   const { posts } = useContext(PostContext);
@@ -21,8 +22,8 @@ export const Profile = () => {
       <div className="home-main-container">
         <TopNavbar />
         <SideNavbar />
-
         <div className="post-container">
+          <ProfileTab />
           {filteredPosts.map((post) => (
             <PostCard key={post._id} post={post} />
           ))}
