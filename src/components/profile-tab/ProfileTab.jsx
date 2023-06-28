@@ -185,7 +185,16 @@ export const ProfileTab = () => {
       </div>
       <div className="">
         {userPosts.map((post) => (
-          <PostCard key={post._id} post={post} />
+          <PostCard
+            key={post._id}
+            post={post}
+            profileAvatar={
+              post.username === user.username
+                ? user?.profileAvatar
+                : allUsers.find((user) => user.username === post.username)
+                    ?.profileAvatar
+            }
+          />
         ))}
       </div>
     </>
