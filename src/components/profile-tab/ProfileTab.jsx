@@ -26,6 +26,17 @@ const customStyles = {
   },
 };
 
+const avatorDB = [
+  "https://ik.imagekit.io/u6itcrvxy/Avator/ava_01.png?updatedAt=1687861494980",
+  "https://ik.imagekit.io/u6itcrvxy/Avator/ava_02.png?updatedAt=1687861494994",
+  "https://ik.imagekit.io/u6itcrvxy/Avator/ava_03.png?updatedAt=1687861495452",
+  "https://ik.imagekit.io/u6itcrvxy/Avator/ava_04.png?updatedAt=1687861494883",
+  "https://ik.imagekit.io/u6itcrvxy/Avator/ava_05.png?updatedAt=1687861495414",
+  "https://ik.imagekit.io/u6itcrvxy/Avator/ava_06.png?updatedAt=1687861495159",
+  "https://ik.imagekit.io/u6itcrvxy/Avator/ava_07.png?updatedAt=1687861495169",
+  "https://ik.imagekit.io/u6itcrvxy/Avator/ava_08.png?updatedAt=1687861495462",
+];
+
 export const ProfileTab = () => {
   const { authState, handleEdit, handleLogout } = useContext(AuthContext);
   const { user, token } = authState;
@@ -42,7 +53,10 @@ export const ProfileTab = () => {
 
   const [allUsers, setAllUsers] = useState([]);
 
+  const [imgUrl, setImgUrl] = useState(null);
+
   const [modalOpen, setModalOpen] = useState(false);
+  const [avatorModalOpen, setAvatorModalOpen] = useState(false);
 
   const filteredUser = allUsers.find(
     (user) => user.username === selectedUsername
@@ -55,6 +69,11 @@ export const ProfileTab = () => {
   const saveButtonHandler = () => {
     handleEdit(userDetails, token);
     setModalOpen(false);
+  };
+
+  const avatorSaveButtonHandler = () => {
+    setUserDetails((curr) => ({ ...curr, profileAvatar: imgUrl }));
+    setAvatorModalOpen(false);
   };
 
   useEffect(() => {
@@ -80,6 +99,7 @@ export const ProfileTab = () => {
   }, [user]);
 
   //   console.log(selectedUsername);
+  console.log(imgUrl);
 
   return (
     <>
@@ -101,7 +121,9 @@ export const ProfileTab = () => {
               </div>
               <div>
                 <p>{filteredUser?.username}</p>
-                <p>Change profile avator</p>
+                <p onClick={() => setAvatorModalOpen(true)}>
+                  Change profile avator
+                </p>
               </div>
             </div>
             <div className="website-edit-container">
@@ -136,6 +158,30 @@ export const ProfileTab = () => {
           </div>
 
           {/* <CreatePost close={setModalOpen} /> */}
+        </Modal>
+        <Modal
+          isOpen={avatorModalOpen}
+          onRequestClose={() => setAvatorModalOpen(false)}
+          style={customStyles}
+          ariaHideApp={false}
+        >
+          <p>Select Avator</p>
+          <div className="edit-user-profile-container">
+            <div className="profile-avator-container">
+              {avatorDB.map((avator) => (
+                <div
+                  key={avator}
+                  className="avator"
+                  onClick={() => setImgUrl(avator)}
+                >
+                  <img src={avator} alt={avator} />
+                </div>
+              ))}
+            </div>
+            <button className="save-button" onClick={avatorSaveButtonHandler}>
+              Save
+            </button>
+          </div>
         </Modal>
         <div className="profile-picture-container">
           <div className="profile-section-picture">

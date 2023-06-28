@@ -80,6 +80,20 @@
 .edit-picture img {
   width: 100%;
 }
+.profile-avator-container {
+  display: flex;
+  gap: 1rem;
+}
+.avator {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+.avator img {
+  width: 100%;
+  cursor: pointer;
+}
 .website-edit-container {
   display: flex;
   gap: 2rem;
