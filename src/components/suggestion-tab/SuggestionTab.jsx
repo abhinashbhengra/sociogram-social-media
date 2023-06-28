@@ -1,12 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import "./suggestion-tab.css";
 import { AuthContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export const SuggestionTab = () => {
   const { authState } = useContext(AuthContext);
   const { user } = authState;
   const { following } = user;
   const [allUser, setAllUser] = useState([]);
+
+  const navigate = useNavigate();
 
   const suggestion = allUser
     .filter(({ _id }) => _id !== user._id)
@@ -31,7 +34,10 @@ export const SuggestionTab = () => {
         <p>Suggestion for you</p>
         {suggestion.map((user) => (
           <div className="suggestion-container" key={user._id}>
-            <div className="suggestion-user-picture"></div>
+            <div
+              className="suggestion-user-picture"
+              onClick={() => navigate(`/profile/${user.username}`)}
+            ></div>
             <div className="suggestion-user-name-username">
               <div className="suggestion-user-name">{user.fullName}</div>
               <div className="suggestion-user-username">{user.username}</div>
