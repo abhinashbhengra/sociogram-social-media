@@ -1,9 +1,9 @@
 import "./profileTab.css";
 import Modal from "react-modal";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { PostContext } from "../../context/PostContext";
-import { BookmarkContext } from "../../context/BookmarkContext";
+import { useParams } from "react-router-dom";
 
 const customStyles = {
   overlay: {
@@ -26,28 +26,62 @@ const customStyles = {
 };
 
 export const ProfileTab = () => {
-  const { authState, handleEdit } = useContext(AuthContext);
+  const { authState, handleEdit, handleLogout } = useContext(AuthContext);
   const { user, token } = authState;
-  const {
-    user: { username, followers, following, bio, website, profileAvatar },
-  } = authState;
+  //   const {
+  //     user: { username, followers, following, bio, website, profileAvatar },
+  //   } = authState;
+  const [userDetails, setUserDetails] = useState({
+    profileAvatar: null,
+    bio: null,
+    website: null,
+  });
 
   const { posts } = useContext(PostContext);
 
-  const [userDetails, setUserDetails] = useState({
-    profileAvatar,
-    bio,
-    website,
-  });
+  const { selectedUsername } = useParams();
+
+  const [allUsers, setAllUsers] = useState([]);
 
   const [modalOpen, setModalOpen] = useState(false);
 
-  const userPosts = posts.filter((post) => post.username === username);
+  const userPosts = posts.filter((post) => post.username === selectedUsername);
+
+  const filteredUser = allUsers.find(
+    (user) => user.username === selectedUsername
+  );
+
+  //   const { username, followers, following, bio, website, profileAvatar } =
+  //     filteredUser;
 
   const saveButtonHandler = () => {
     handleEdit(userDetails, token);
     setModalOpen(false);
   };
+
+  useEffect(() => {
+    setUserDetails((curr) => ({
+      ...curr,
+      profileAvatar: filteredUser?.profileAvatar,
+      bio: filteredUser?.bio,
+      website: filteredUser?.website,
+    }));
+  }, [filteredUser]);
+
+  useEffect(() => {
+    const getAllUsers = async () => {
+      try {
+        const response = await fetch("/api/users");
+        const data = await response.json();
+        setAllUsers(data.users);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    getAllUsers();
+  }, [user]);
+
+  //   console.log(profileAvatar);
 
   return (
     <div className="profile-tab-main-container">
@@ -61,10 +95,13 @@ export const ProfileTab = () => {
         <div className="edit-user-profile-container">
           <div className="profile-picture-edit-container">
             <div className="edit-picture">
-              <img src={profileAvatar} alt={username} />
+              <img
+                src={userDetails?.profileAvatar}
+                alt={filteredUser?.username}
+              />
             </div>
             <div>
-              <p>{username}</p>
+              <p>{filteredUser?.username}</p>
               <p>Change profile avator</p>
             </div>
           </div>
@@ -73,7 +110,7 @@ export const ProfileTab = () => {
             <input
               type="text"
               name="website"
-              value={userDetails.website}
+              value={userDetails?.website}
               onChange={(e) =>
                 setUserDetails((curr) => ({ ...curr, website: e.target.value }))
               }
@@ -83,7 +120,7 @@ export const ProfileTab = () => {
             <p>Bio</p>
             <textarea
               name="bio"
-              value={userDetails.bio}
+              value={userDetails?.bio}
               onChange={(e) =>
                 setUserDetails((curr) => ({ ...curr, bio: e.target.value }))
               }
@@ -100,32 +137,35 @@ export const ProfileTab = () => {
       </Modal>
       <div className="profile-picture-container">
         <div className="profile-section-picture">
-          <img src={profileAvatar} alt={username} />
+          <img src={filteredUser?.profileAvatar} alt={filteredUser?.username} />
         </div>
       </div>
       <div className="profile-details-container">
         <div className="profile-username-edit-container">
-          <div>{username}</div>
-          <button onClick={() => setModalOpen(true)}>Edit</button>
+          <div>{filteredUser?.username}</div>
+          <div>
+            <button onClick={() => setModalOpen(true)}>Edit</button>
+            <button onClick={() => handleLogout()}>Logout</button>
+          </div>
         </div>
         <div className="post-followers-following-container">
           <p>
-            {userPosts.length < 2
-              ? `${userPosts.length} post`
-              : `${userPosts.length} posts`}
+            {userPosts?.length < 2
+              ? `${userPosts?.length} post`
+              : `${userPosts?.length} posts`}
           </p>
           <p>
-            {followers.length < 2
-              ? `${followers.length} follower`
-              : `${followers.length} followers`}
+            {filteredUser?.followers?.length < 2
+              ? `${filteredUser?.followers?.length} follower`
+              : `${filteredUser?.followers?.length} followers`}
           </p>
-          <p>{following.length} following</p>
+          <p>{filteredUser?.following?.length} following</p>
         </div>
         <div className="profile-bio-link-container">
-          <p>{bio}</p>
+          <p>{filteredUser?.bio}</p>
           <p className="website-link">
-            <a href={website} target="blank">
-              {website.slice(8)}
+            <a href={filteredUser?.website} target="blank">
+              {filteredUser?.website?.slice(8)}
             </a>
           </p>
         </div>

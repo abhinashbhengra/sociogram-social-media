@@ -2,8 +2,9 @@ import "./navbar.css";
 
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { CreatePost } from "../create-post/CreatePost";
+import { AuthContext } from "../../context/AuthContext";
 
 const customStyles = {
   overlay: {
@@ -27,6 +28,8 @@ const customStyles = {
 
 export const SideNavbar = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const { authState } = useContext(AuthContext);
+  const { user } = authState;
 
   return (
     <>
@@ -69,7 +72,7 @@ export const SideNavbar = () => {
             <span className="icon-text">Bookmarks</span>
           </div>
         </Link>
-        <Link to="/profile" className="navLink">
+        <Link to={`/profile/${user.username}`} className="navLink">
           <div className="side-profile">
             <div className="side-profile-pic"></div>
             <span className="icon-text">Profile</span>

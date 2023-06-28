@@ -17,7 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/bookmarks" element={<Bookmark />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/:selectedUsername" element={<Profile />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
