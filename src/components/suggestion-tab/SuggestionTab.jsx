@@ -28,8 +28,6 @@ export const SuggestionTab = () => {
     getUser();
   }, []);
 
-  console.log(suggestion);
-
   return (
     <>
       <div className="suggestion-tab-main-container">
