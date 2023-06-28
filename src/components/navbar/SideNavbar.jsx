@@ -31,6 +31,8 @@ export const SideNavbar = () => {
   const { authState } = useContext(AuthContext);
   const { user } = authState;
 
+  console.log(user);
+
   return (
     <>
       <div className="side-nav-main-container">
@@ -74,7 +76,9 @@ export const SideNavbar = () => {
         </Link>
         <Link to={`/profile/${user.username}`} className="navLink">
           <div className="side-profile">
-            <div className="side-profile-pic"></div>
+            <div className="side-profile-pic">
+              <img src={user.profileAvatar} alt={user.username} />
+            </div>
             <span className="icon-text">Profile</span>
           </div>
         </Link>

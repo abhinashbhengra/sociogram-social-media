@@ -160,7 +160,12 @@
   width: 30px;
   background-color: #262626;
   border-radius: 100px;
+  overflow: hidden;
 }
+.side-profile-pic img {
+  width: 100%;
+}
+
 .side-profile:hover {
   background-color: #262626;
   cursor: pointer;
