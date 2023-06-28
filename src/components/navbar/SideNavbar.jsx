@@ -31,8 +31,6 @@ export const SideNavbar = () => {
   const { authState } = useContext(AuthContext);
   const { user } = authState;
 
-  console.log(user);
-
   return (
     <>
       <div className="side-nav-main-container">
