@@ -14,7 +14,7 @@ export const users = [
     bio: "Versatile",
     website: "https://abhinashbhengra.netlify.app",
     profileAvatar:
-      "https://ik.imagekit.io/u6itcrvxy/Avator/ava_04.png?updatedAt=1687861494883",
+      "https://ik.imagekit.io/u6itcrvxy/Avator/ava_02.png?updatedAt=1687861494994",
     createdAt: formatDate(),
     updatedAt: formatDate(),
     following: [
