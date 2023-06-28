@@ -98,9 +98,6 @@ export const ProfileTab = () => {
     getAllUsers();
   }, [user]);
 
-  //   console.log(selectedUsername);
-  console.log(imgUrl);
-
   return (
     <>
       <div className="profile-tab-main-container">
