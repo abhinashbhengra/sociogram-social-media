@@ -38,7 +38,10 @@ export const SuggestionTab = () => {
               className="suggestion-user-picture"
               onClick={() => navigate(`/profile/${user.username}`)}
             ></div>
-            <div className="suggestion-user-name-username">
+            <div
+              className="suggestion-user-name-username"
+              onClick={() => navigate(`/profile/${user.username}`)}
+            >
               <div className="suggestion-user-name">{user.fullName}</div>
               <div className="suggestion-user-username">{user.username}</div>
             </div>
