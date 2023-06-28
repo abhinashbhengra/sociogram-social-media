@@ -11,12 +11,6 @@ import { AuthContext } from "../../context/AuthContext";
 import { ProfileTab } from "../../components/profile-tab/ProfileTab";
 
 export const Profile = () => {
-  const { posts } = useContext(PostContext);
-  const { authState } = useContext(AuthContext);
-  const { user } = authState;
-
-  const filteredPosts = posts.filter((post) => post.username === user.username);
-
   return (
     <>
       <div className="home-main-container">
@@ -24,9 +18,6 @@ export const Profile = () => {
         <SideNavbar />
         <div className="post-container">
           <ProfileTab />
-          {filteredPosts.map((post) => (
-            <PostCard key={post._id} post={post} />
-          ))}
         </div>
         <SuggestionTab />
         <BottomNavbar />
