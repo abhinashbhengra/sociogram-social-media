@@ -4,7 +4,7 @@ import { BookmarkContext } from "../../context/BookmarkContext";
 import { LikeUnlikeContext } from "../../context/LikeUnlikeContext";
 import { AuthContext } from "../../context/AuthContext";
 
-export const PostCard = ({ post }) => {
+export const PostCard = ({ post, profileAvatar }) => {
   const { fullName, username, content, postImage, createdAt } = post;
   const { bookmark, addToBookmark, removeFromBookmark } =
     useContext(BookmarkContext);
@@ -22,7 +22,9 @@ export const PostCard = ({ post }) => {
     <>
       <div className="post-main-container">
         <div className="post-head">
-          <div className="user-picture"></div>
+          <div className="user-picture">
+            <img src={profileAvatar} alt={username} />
+          </div>
           <div className="user-name-username">
             <div className="user-name">{fullName}</div>
             <div className="user-username">{username}</div>

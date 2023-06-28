@@ -24,6 +24,8 @@ export const Home = () => {
 
   const { likeUnlikeItems } = useContext(LikeUnlikeContext);
 
+  const [allUsers, setAllUsers] = useState([]);
+
   const followingUserPost = posts?.filter((post) => {
     return following.some(
       (followingUser) => followingUser.username === post.username
@@ -60,6 +62,19 @@ export const Home = () => {
       }
     };
     getPost();
+  }, []);
+
+  useEffect(() => {
+    const getAllUsers = async () => {
+      try {
+        const response = await fetch("/api/users");
+        const data = await response.json();
+        setAllUsers(data.users);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    getAllUsers();
   }, []);
 
   return (
@@ -115,7 +130,16 @@ export const Home = () => {
           </div>
         </div>
         {sortedPost.reverse().map((post) => (
-          <PostCard key={post._id} post={post} user={user} />
+          <PostCard
+            key={post._id}
+            post={post}
+            profileAvatar={
+              post.username === user.username
+                ? user?.profileAvatar
+                : allUsers.find((user) => user.username === post.username)
+                    ?.profileAvatar
+            }
+          />
         ))}
       </div>
       <SuggestionTab />
