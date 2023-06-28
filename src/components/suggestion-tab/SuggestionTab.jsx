@@ -28,6 +28,8 @@ export const SuggestionTab = () => {
     getUser();
   }, []);
 
+  console.log(suggestion);
+
   return (
     <>
       <div className="suggestion-tab-main-container">
@@ -37,7 +39,9 @@ export const SuggestionTab = () => {
             <div
               className="suggestion-user-picture"
               onClick={() => navigate(`/profile/${user.username}`)}
-            ></div>
+            >
+              <img src={user.profileAvatar} alt={user.username} />
+            </div>
             <div
               className="suggestion-user-name-username"
               onClick={() => navigate(`/profile/${user.username}`)}

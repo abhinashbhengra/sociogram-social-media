@@ -22,6 +22,10 @@
   background-color: #262626;
   border-radius: 100px;
   cursor: pointer;
+  overflow: hidden;
+}
+.suggestion-user-picture img {
+  width: 100%;
 }
 .suggestion-user-name-username {
   cursor: pointer;
