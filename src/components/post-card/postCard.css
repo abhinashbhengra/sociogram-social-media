@@ -6,10 +6,20 @@
   border-bottom: 1px solid #262626;
 }
 .post-head {
+  position: relative;
   /* border: 1px solid purple; */
   display: flex;
   gap: 1rem;
   padding: 6px 2px;
+}
+.post-options-container {
+  position: absolute;
+  right: 0;
+
+  cursor: pointer;
+}
+.post-options-container img {
+  width: 20px;
 }
 
 .user-picture {
@@ -21,6 +31,25 @@
 }
 .user-picture img {
   width: 100%;
+}
+.options {
+  padding: 6px 1.5rem;
+  /* border: 1px solid red; */
+  position: absolute;
+  right: 0;
+  background-color: #262626;
+
+  line-height: 6px;
+}
+.option-text {
+  cursor: pointer;
+}
+.cancel-button {
+  position: absolute;
+  right: 0;
+  width: 20px;
+
+  cursor: pointer;
 }
 
 .post-content-container {

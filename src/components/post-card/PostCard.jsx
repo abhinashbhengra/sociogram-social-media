@@ -1,8 +1,9 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import "./postCard.css";
 import { BookmarkContext } from "../../context/BookmarkContext";
 import { LikeUnlikeContext } from "../../context/LikeUnlikeContext";
 import { AuthContext } from "../../context/AuthContext";
+import { PostContext } from "../../context/PostContext";
 
 export const PostCard = ({ post, profileAvatar }) => {
   const { fullName, username, content, postImage, createdAt } = post;
@@ -11,7 +12,10 @@ export const PostCard = ({ post, profileAvatar }) => {
   const { likeUnlikeItems, likeThePost, unlikeThePost } =
     useContext(LikeUnlikeContext);
   const { authState } = useContext(AuthContext);
-  const { user } = authState;
+  const { deletePost } = useContext(PostContext);
+  const { user, token } = authState;
+
+  const [optionOpen, setOptionOpen] = useState(false);
 
   // const selectedPost = likeUnlikeItems.find(({ _id }) => post._id);
 
@@ -35,6 +39,39 @@ export const PostCard = ({ post, profileAvatar }) => {
               .split(" ")
               .slice(1, 4)
               .join(" ")}
+          </div>
+          <div
+            className="post-options-container"
+            onClick={() => setOptionOpen(true)}
+          >
+            <img src="./icons/options.svg" alt="options-icon" />
+          </div>
+          <div
+            className="options"
+            style={{ display: optionOpen ? "block" : "none" }}
+          >
+            <img
+              src="./icons/cancel.svg"
+              alt="cancel-logo"
+              className="cancel-button"
+              onClick={() => setOptionOpen(false)}
+            />
+            {user.username === post.username ? (
+              <div>
+                <p className="option-text">Edit</p>
+                <p
+                  className="option-text"
+                  onClick={() => deletePost(post._id, token)}
+                >
+                  Delete
+                </p>
+              </div>
+            ) : (
+              <div>
+                <p className="option-text">Follow</p>
+                <p className="option-text">Unfollow</p>
+              </div>
+            )}
           </div>
         </div>
         <div className="post-content-container">
