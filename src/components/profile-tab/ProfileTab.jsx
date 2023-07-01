@@ -38,6 +38,9 @@ const avatorDB = [
   "https://ik.imagekit.io/u6itcrvxy/Avator/ava_08.png?updatedAt=1687861495462",
 ];
 
+const defaultDp =
+  "https://ik.imagekit.io/u6itcrvxy/Social-Media-icons/user-circle-svgrepo-com.svg?updatedAt=1688209997484";
+
 export const ProfileTab = () => {
   const { authState, handleEdit, handleLogout } = useContext(AuthContext);
   const { user, token } = authState;
@@ -118,7 +121,11 @@ export const ProfileTab = () => {
             <div className="profile-picture-edit-container">
               <div className="edit-picture">
                 <img
-                  src={userDetails?.profileAvatar}
+                  src={
+                    filteredUser?.profileAvatar === undefined
+                      ? defaultDp
+                      : filteredUser?.profileAvatar
+                  }
                   alt={filteredUser?.username}
                 />
               </div>
@@ -189,7 +196,11 @@ export const ProfileTab = () => {
         <div className="profile-picture-container">
           <div className="profile-section-picture">
             <img
-              src={filteredUser?.profileAvatar}
+              src={
+                filteredUser?.profileAvatar === undefined
+                  ? defaultDp
+                  : filteredUser?.profileAvatar
+              }
               alt={filteredUser?.username}
             />
           </div>
