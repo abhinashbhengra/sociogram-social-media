@@ -25,6 +25,8 @@ const customStyles = {
     border: "none",
   },
 };
+const defaultDp =
+  "https://ik.imagekit.io/u6itcrvxy/Social-Media-icons/user-circle-svgrepo-com.svg?updatedAt=1688209997484";
 
 export const SideNavbar = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -75,7 +77,14 @@ export const SideNavbar = () => {
         <Link to={`/profile/${user.username}`} className="navLink">
           <div className="side-profile">
             <div className="side-profile-pic">
-              <img src={user.profileAvatar} alt={user.username} />
+              <img
+                src={
+                  user.profileAvatar === undefined
+                    ? defaultDp
+                    : user.profileAvatar
+                }
+                alt={user.username}
+              />
             </div>
             <span className="icon-text">Profile</span>
           </div>
