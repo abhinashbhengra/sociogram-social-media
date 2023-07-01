@@ -8,6 +8,7 @@ import { AuthProvider } from "./context/AuthContext";
 import { BookmarkProvider } from "./context/BookmarkContext";
 import { LikeUnlikeProvider } from "./context/LikeUnlikeContext";
 import { PostProvider } from "./context/PostContext";
+import { FollowUnfollowProvider } from "./context/FollowUnfollowContext";
 
 // Call make Server
 makeServer();
@@ -19,7 +20,9 @@ ReactDOM.render(
         <BookmarkProvider>
           <PostProvider>
             <LikeUnlikeProvider>
-              <App />
+              <FollowUnfollowProvider>
+                <App />
+              </FollowUnfollowProvider>
             </LikeUnlikeProvider>
           </PostProvider>
         </BookmarkProvider>

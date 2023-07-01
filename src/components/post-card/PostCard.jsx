@@ -6,6 +6,7 @@ import { LikeUnlikeContext } from "../../context/LikeUnlikeContext";
 import { AuthContext } from "../../context/AuthContext";
 import { PostContext } from "../../context/PostContext";
 import { EditPost } from "../edit-post/EditPost";
+import { FollowUnfollowContext } from "../../context/FollowUnfollowContext";
 
 const customStyles = {
   overlay: {
@@ -29,9 +30,12 @@ const customStyles = {
 
 export const PostCard = ({ post, profileAvatar }) => {
   const { fullName, username, content, postImage, createdAt } = post;
+  const [allUsers, setAllUsers] = useState([]);
   const { bookmark, addToBookmark, removeFromBookmark } =
     useContext(BookmarkContext);
   const { likeThePost, unlikeThePost } = useContext(LikeUnlikeContext);
+
+  const { followUser, unfollowUser } = useContext(FollowUnfollowContext);
   const { authState } = useContext(AuthContext);
   const { deletePost } = useContext(PostContext);
   const { user, token } = authState;
@@ -41,6 +45,23 @@ export const PostCard = ({ post, profileAvatar }) => {
 
   const likedByUser = () =>
     post?.likes?.likedBy?.filter((user) => user._id === user._id)?.length !== 0;
+
+  const currentUser = allUsers.find((user) => user.username === post.username);
+
+  useEffect(() => {
+    const getAllUsers = async () => {
+      try {
+        const response = await fetch("/api/users");
+        const data = await response.json();
+        setAllUsers(data.users);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    getAllUsers();
+  }, []);
+
+  // console.log(currentUser);
 
   return (
     <>
@@ -103,8 +124,18 @@ export const PostCard = ({ post, profileAvatar }) => {
               </div>
             ) : (
               <div>
-                <p className="option-text">Follow</p>
-                <p className="option-text">Unfollow</p>
+                <p
+                  className="option-text"
+                  onClick={() => followUser(currentUser._id)}
+                >
+                  Follow
+                </p>
+                <p
+                  className="option-text"
+                  onClick={() => unfollowUser(currentUser._id)}
+                >
+                  Unfollow
+                </p>
               </div>
             )}
           </div>
