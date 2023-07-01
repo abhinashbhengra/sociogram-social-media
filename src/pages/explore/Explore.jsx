@@ -27,7 +27,7 @@ export const Explore = () => {
       }
     };
     getAllUsers();
-  }, []);
+  }, [posts]);
   return (
     <>
       <div className="home-main-container">

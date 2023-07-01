@@ -8,27 +8,22 @@ import { PostCard } from "../../components/post-card/PostCard";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { filteredPosts } from "../../utils/filters/filters";
-import { LikeUnlikeContext } from "../../context/LikeUnlikeContext";
-import { CreatePost } from "../../components/create-post/CreatePost";
 import { PostContext } from "../../context/PostContext";
 
 export const Home = () => {
-  const { posts, setPosts } = useContext(PostContext);
+  const { posts } = useContext(PostContext);
   const [sortBy, setSortBy] = useState("All");
   const { authState } = useContext(AuthContext);
-  const { token } = authState;
   const { user } = authState;
   const { following } = user;
 
   const [showFilter, setShowFilter] = useState(false);
 
-  const { likeUnlikeItems } = useContext(LikeUnlikeContext);
-
   const [allUsers, setAllUsers] = useState([]);
 
   const followingUserPost = posts?.filter((post) => {
-    return following.some(
-      (followingUser) => followingUser.username === post.username
+    return following?.some(
+      (followingUser) => followingUser?.username === post?.username
     );
   });
 
@@ -48,23 +43,6 @@ export const Home = () => {
   };
 
   useEffect(() => {
-    setPosts(likeUnlikeItems);
-  }, [likeUnlikeItems]);
-
-  useEffect(() => {
-    const getPost = async () => {
-      try {
-        const response = await fetch("/api/posts");
-        const data = await response.json();
-        setPosts(data.posts);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    getPost();
-  }, []);
-
-  useEffect(() => {
     const getAllUsers = async () => {
       try {
         const response = await fetch("/api/users");
@@ -82,7 +60,6 @@ export const Home = () => {
       <TopNavbar />
       <SideNavbar />
       <div className="feed-container">
-        {/* <CreatePost /> */}
         <div className="user-feed-filter-container">
           <p>{sortBy} Post</p>
           <img

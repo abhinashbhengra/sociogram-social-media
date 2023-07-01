@@ -34,6 +34,7 @@ export const PostProvider = ({ children }) => {
     };
     getPost();
   }, []);
+
   return (
     <PostContext.Provider value={{ posts, setPosts, deletePost }}>
       {children}

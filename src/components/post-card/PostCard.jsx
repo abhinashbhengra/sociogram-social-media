@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./postCard.css";
 import { BookmarkContext } from "../../context/BookmarkContext";
 import { LikeUnlikeContext } from "../../context/LikeUnlikeContext";
@@ -9,15 +9,12 @@ export const PostCard = ({ post, profileAvatar }) => {
   const { fullName, username, content, postImage, createdAt } = post;
   const { bookmark, addToBookmark, removeFromBookmark } =
     useContext(BookmarkContext);
-  const { likeUnlikeItems, likeThePost, unlikeThePost } =
-    useContext(LikeUnlikeContext);
+  const { likeThePost, unlikeThePost } = useContext(LikeUnlikeContext);
   const { authState } = useContext(AuthContext);
   const { deletePost } = useContext(PostContext);
   const { user, token } = authState;
 
   const [optionOpen, setOptionOpen] = useState(false);
-
-  // const selectedPost = likeUnlikeItems.find(({ _id }) => post._id);
 
   const likedByUser = () =>
     post?.likes?.likedBy?.filter((user) => user._id === user._id)?.length !== 0;
@@ -90,7 +87,6 @@ export const PostCard = ({ post, profileAvatar }) => {
                   alt="like-icon"
                   className="post-like-image"
                 />
-                {}
               </div>
             ) : (
               <div onClick={() => likeThePost(post._id)}>

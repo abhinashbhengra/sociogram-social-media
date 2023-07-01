@@ -16,13 +16,13 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <PostProvider>
-          <BookmarkProvider>
+        <BookmarkProvider>
+          <PostProvider>
             <LikeUnlikeProvider>
               <App />
             </LikeUnlikeProvider>
-          </BookmarkProvider>
-        </PostProvider>
+          </PostProvider>
+        </BookmarkProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
