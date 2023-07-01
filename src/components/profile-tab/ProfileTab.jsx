@@ -5,6 +5,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { PostContext } from "../../context/PostContext";
 import { useParams } from "react-router-dom";
 import { PostCard } from "../post-card/PostCard";
+import { FollowUnfollowContext } from "../../context/FollowUnfollowContext";
 
 const customStyles = {
   overlay: {
@@ -53,6 +54,10 @@ export const ProfileTab = () => {
 
   const [allUsers, setAllUsers] = useState([]);
 
+  const { followedUser, followUser, unfollowUser } = useContext(
+    FollowUnfollowContext
+  );
+
   const [imgUrl, setImgUrl] = useState(null);
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -63,8 +68,7 @@ export const ProfileTab = () => {
   );
   const userPosts = posts.filter((post) => post.username === selectedUsername);
 
-  //   const { username, followers, following, bio, website, profileAvatar } =
-  //     filteredUser;
+  const followedByUser = () => followedUser.includes(filteredUser?.username);
 
   const saveButtonHandler = () => {
     handleEdit(userDetails, token);
@@ -97,6 +101,8 @@ export const ProfileTab = () => {
     };
     getAllUsers();
   }, [user]);
+
+  console.log(followedByUser());
 
   return (
     <>
@@ -198,8 +204,15 @@ export const ProfileTab = () => {
               </div>
             ) : (
               <div>
-                <button>follow</button>
-                <button>Unfollow</button>
+                {followedByUser() ? (
+                  <button onClick={() => unfollowUser(filteredUser._id)}>
+                    Unfollow
+                  </button>
+                ) : (
+                  <button onClick={() => followUser(filteredUser._id)}>
+                    follow
+                  </button>
+                )}
               </div>
             )}
           </div>
