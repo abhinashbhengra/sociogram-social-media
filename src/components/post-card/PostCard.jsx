@@ -34,7 +34,7 @@ export const PostCard = ({ post, profileAvatar }) => {
   const { bookmark, addToBookmark, removeFromBookmark } =
     useContext(BookmarkContext);
   const { likeThePost, unlikeThePost } = useContext(LikeUnlikeContext);
-
+  const { followedUser } = useContext(FollowUnfollowContext);
   const { followUser, unfollowUser } = useContext(FollowUnfollowContext);
   const { authState } = useContext(AuthContext);
   const { deletePost } = useContext(PostContext);
@@ -47,6 +47,18 @@ export const PostCard = ({ post, profileAvatar }) => {
     post?.likes?.likedBy?.filter((user) => user._id === user._id)?.length !== 0;
 
   const currentUser = allUsers.find((user) => user.username === post.username);
+
+  const followedByUser = () => followedUser.includes(currentUser?.username);
+
+  const handleFollowUser = (userId) => {
+    followUser(userId);
+    setOptionOpen(false);
+  };
+
+  const handleUnfollowUser = (userId) => {
+    unfollowUser(userId);
+    setOptionOpen(false);
+  };
 
   useEffect(() => {
     const getAllUsers = async () => {
@@ -124,18 +136,21 @@ export const PostCard = ({ post, profileAvatar }) => {
               </div>
             ) : (
               <div>
-                <p
-                  className="option-text"
-                  onClick={() => followUser(currentUser._id)}
-                >
-                  Follow
-                </p>
-                <p
-                  className="option-text"
-                  onClick={() => unfollowUser(currentUser._id)}
-                >
-                  Unfollow
-                </p>
+                {followedByUser() ? (
+                  <p
+                    className="option-text"
+                    onClick={() => handleUnfollowUser(currentUser._id)}
+                  >
+                    Unfollow
+                  </p>
+                ) : (
+                  <p
+                    className="option-text"
+                    onClick={() => handleFollowUser(currentUser._id)}
+                  >
+                    Follow
+                  </p>
+                )}
               </div>
             )}
           </div>

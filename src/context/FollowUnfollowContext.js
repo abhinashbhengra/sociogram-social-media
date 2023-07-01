@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { AuthContext } from "./AuthContext";
 
 export const FollowUnfollowContext = createContext({
@@ -47,7 +47,9 @@ export const FollowUnfollowProvider = ({ children }) => {
   };
 
   return (
-    <FollowUnfollowContext.Provider value={{ followUser, unfollowUser }}>
+    <FollowUnfollowContext.Provider
+      value={{ followedUser, followUser, unfollowUser }}
+    >
       {children}
     </FollowUnfollowContext.Provider>
   );
