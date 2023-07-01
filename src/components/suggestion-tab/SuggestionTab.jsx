@@ -44,8 +44,6 @@ export const SuggestionTab = () => {
     getUserDetails();
   }, [followedUser]);
 
-  console.log("suggestion", suggestion);
-
   return (
     <>
       <div className="suggestion-tab-main-container">
