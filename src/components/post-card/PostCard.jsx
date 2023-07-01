@@ -1,9 +1,31 @@
-import { useContext, useEffect, useState } from "react";
 import "./postCard.css";
+import { useContext, useEffect, useState } from "react";
+import Modal from "react-modal";
 import { BookmarkContext } from "../../context/BookmarkContext";
 import { LikeUnlikeContext } from "../../context/LikeUnlikeContext";
 import { AuthContext } from "../../context/AuthContext";
 import { PostContext } from "../../context/PostContext";
+import { EditPost } from "../edit-post/EditPost";
+
+const customStyles = {
+  overlay: {
+    backgroundColor: "rgba(0, 0, 0, 0.70)",
+  },
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    backgroundColor: "#262626",
+    color: "#a5a5a5",
+    width: 500,
+    height: "auto",
+    overflow: "hidden",
+    border: "none",
+  },
+};
 
 export const PostCard = ({ post, profileAvatar }) => {
   const { fullName, username, content, postImage, createdAt } = post;
@@ -15,6 +37,7 @@ export const PostCard = ({ post, profileAvatar }) => {
   const { user, token } = authState;
 
   const [optionOpen, setOptionOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const likedByUser = () =>
     post?.likes?.likedBy?.filter((user) => user._id === user._id)?.length !== 0;
@@ -22,6 +45,19 @@ export const PostCard = ({ post, profileAvatar }) => {
   return (
     <>
       <div className="post-main-container">
+        <Modal
+          isOpen={modalOpen}
+          onRequestClose={() => setModalOpen(false)}
+          style={customStyles}
+          ariaHideApp={false}
+        >
+          <p>Edit Post</p>
+          <EditPost
+            close={setModalOpen}
+            selectedPost={post}
+            optionClose={setOptionOpen}
+          />
+        </Modal>
         <div className="post-head">
           <div className="user-picture">
             <img src={profileAvatar} alt={username} />
@@ -55,7 +91,9 @@ export const PostCard = ({ post, profileAvatar }) => {
             />
             {user.username === post.username ? (
               <div>
-                <p className="option-text">Edit</p>
+                <p className="option-text" onClick={() => setModalOpen(true)}>
+                  Edit
+                </p>
                 <p
                   className="option-text"
                   onClick={() => deletePost(post._id, token)}
