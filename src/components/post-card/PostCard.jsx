@@ -8,6 +8,9 @@ import { PostContext } from "../../context/PostContext";
 import { EditPost } from "../edit-post/EditPost";
 import { FollowUnfollowContext } from "../../context/FollowUnfollowContext";
 
+const defaultDp =
+  "https://ik.imagekit.io/u6itcrvxy/Social-Media-icons/user-circle-svgrepo-com.svg?updatedAt=1688209997484";
+
 const customStyles = {
   overlay: {
     backgroundColor: "rgba(0, 0, 0, 0.70)",
@@ -74,6 +77,7 @@ export const PostCard = ({ post, profileAvatar }) => {
   }, []);
 
   // console.log(currentUser);
+  console.log(profileAvatar);
 
   return (
     <>
@@ -93,7 +97,10 @@ export const PostCard = ({ post, profileAvatar }) => {
         </Modal>
         <div className="post-head">
           <div className="user-picture">
-            <img src={profileAvatar} alt={username} />
+            <img
+              src={profileAvatar === undefined ? defaultDp : profileAvatar}
+              alt={username}
+            />
           </div>
           <div className="user-name-username">
             <div className="user-name">{fullName}</div>
