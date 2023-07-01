@@ -105,8 +105,6 @@ export const ProfileTab = () => {
     getAllUsers();
   }, [user]);
 
-  console.log(followedByUser());
-
   return (
     <>
       <div className="profile-tab-main-container">
