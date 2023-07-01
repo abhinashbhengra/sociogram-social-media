@@ -76,9 +76,6 @@ export const PostCard = ({ post, profileAvatar }) => {
     getAllUsers();
   }, []);
 
-  // console.log(currentUser);
-  console.log(profileAvatar);
-
   return (
     <>
       <div className="post-main-container">
