@@ -22,7 +22,6 @@ export const FollowUnfollowProvider = ({ children }) => {
       });
       const data = await response.json();
       const user = data.user;
-      console.log(user);
       const followingUser = user.following.map((user) => user.username);
       setFollowedUser(followingUser);
     } catch (e) {
