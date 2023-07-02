@@ -121,7 +121,7 @@ export const PostCard = ({ post, profileAvatar }) => {
             style={{ display: optionOpen ? "block" : "none" }}
           >
             <img
-              src="./icons/cancel.svg"
+              src="../icons/cancel.svg"
               alt="cancel-logo"
               className="cancel-button"
               onClick={() => setOptionOpen(false)}
