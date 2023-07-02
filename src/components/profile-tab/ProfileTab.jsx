@@ -103,7 +103,7 @@ export const ProfileTab = () => {
       }
     };
     getAllUsers();
-  }, [user]);
+  }, [posts]);
 
   return (
     <>

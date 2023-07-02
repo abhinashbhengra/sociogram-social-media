@@ -114,7 +114,7 @@ export const PostCard = ({ post, profileAvatar }) => {
             className="post-options-container"
             onClick={() => setOptionOpen(true)}
           >
-            <img src="./icons/options.svg" alt="options-icon" />
+            <img src="../icons/options.svg" alt="options-icon" />
           </div>
           <div
             className="options"
@@ -193,7 +193,7 @@ export const PostCard = ({ post, profileAvatar }) => {
             {bookmark.find(({ _id }) => _id === post._id) ? (
               <div onClick={() => removeFromBookmark(post._id)}>
                 <img
-                  src="./icons/bookmark-filled.svg"
+                  src="../icons/bookmark-filled.svg"
                   alt="bookmark-logo"
                   className="post-bookmark-image"
                 />
@@ -201,7 +201,7 @@ export const PostCard = ({ post, profileAvatar }) => {
             ) : (
               <div onClick={() => addToBookmark(post._id)}>
                 <img
-                  src="./icons/bookmark.svg"
+                  src="../icons/bookmark.svg"
                   alt="bookmark-logo"
                   className="post-bookmark-image"
                 />
