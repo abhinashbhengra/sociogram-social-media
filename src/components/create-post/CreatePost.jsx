@@ -69,7 +69,7 @@ export const CreatePost = ({ close }) => {
           <label htmlFor="file">
             <img
               className="upload-image-container"
-              src="./icons/image-upload.svg"
+              src="../icons/image-upload.svg"
               alt="image-logo"
             />
           </label>
