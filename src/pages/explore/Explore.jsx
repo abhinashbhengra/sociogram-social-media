@@ -35,7 +35,7 @@ export const Explore = () => {
       <div className="home-main-container">
         <TopNavbar />
         <SideNavbar />
-        <div className="feed-container">
+        <div className="explore-feed-container">
           {!allUsers ? (
             <InfinitySpin width="200" color="#fff" />
           ) : (
