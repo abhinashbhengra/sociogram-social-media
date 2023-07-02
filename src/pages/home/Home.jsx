@@ -10,6 +10,8 @@ import { AuthContext } from "../../context/AuthContext";
 import { filteredPosts } from "../../utils/filters/filters";
 import { PostContext } from "../../context/PostContext";
 
+import { InfinitySpin } from "react-loader-spinner";
+
 export const Home = () => {
   const { posts } = useContext(PostContext);
   const [sortBy, setSortBy] = useState("All");
@@ -19,7 +21,7 @@ export const Home = () => {
 
   const [showFilter, setShowFilter] = useState(false);
 
-  const [allUsers, setAllUsers] = useState([]);
+  const [allUsers, setAllUsers] = useState();
 
   const followingUserPost = posts?.filter((post) => {
     return following?.some(
@@ -60,66 +62,76 @@ export const Home = () => {
       <TopNavbar />
       <SideNavbar />
       <div className="feed-container">
-        <div className="user-feed-filter-container">
-          <p>{sortBy} Post</p>
-          <img
-            src="https://ik.imagekit.io/u6itcrvxy/Social-Media-icons/filters-2-svgrepo-com__1_.svg?updatedAt=1686916215904"
-            alt="filters-logo"
-            width="25px"
-            height="25px"
-            style={{ cursor: "pointer" }}
-            onClick={handleFiltersOption}
-          />
-          <div
-            className="filters-main-container"
-            style={{ display: showFilter ? "block" : "none" }}
-          >
-            <div
-              className="filter-button"
-              onClick={() => handleSortByValue("All")}
-            >
-              All
-            </div>
-            <div
-              className="filter-button"
-              onClick={() => handleSortByValue("Trending")}
-            >
-              Trending
-            </div>
-            <div
-              className="filter-button"
-              onClick={() => handleSortByValue("Latest")}
-            >
-              Latest
-            </div>
-            <div
-              className="filter-button"
-              onClick={() => handleSortByValue("Oldest")}
-            >
-              Oldest
-            </div>
+        {allUsers && (
+          <div className="user-feed-filter-container">
+            <p>{sortBy} Post</p>
             <img
-              className="filter-cancel-button"
-              src="./icons/cancel.svg"
-              alt="cancel"
-              onClick={() => setShowFilter(false)}
+              src="https://ik.imagekit.io/u6itcrvxy/Social-Media-icons/filters-2-svgrepo-com__1_.svg?updatedAt=1686916215904"
+              alt="filters-logo"
+              width="25px"
+              height="25px"
+              style={{ cursor: "pointer" }}
+              onClick={handleFiltersOption}
             />
+            <div
+              className="filters-main-container"
+              style={{ display: showFilter ? "block" : "none" }}
+            >
+              <div
+                className="filter-button"
+                onClick={() => handleSortByValue("All")}
+              >
+                All
+              </div>
+              <div
+                className="filter-button"
+                onClick={() => handleSortByValue("Trending")}
+              >
+                Trending
+              </div>
+              <div
+                className="filter-button"
+                onClick={() => handleSortByValue("Latest")}
+              >
+                Latest
+              </div>
+              <div
+                className="filter-button"
+                onClick={() => handleSortByValue("Oldest")}
+              >
+                Oldest
+              </div>
+              <img
+                className="filter-cancel-button"
+                src="./icons/cancel.svg"
+                alt="cancel"
+                onClick={() => setShowFilter(false)}
+              />
+            </div>
           </div>
-        </div>
-        {sortedPost.reverse().map((post) => (
-          <PostCard
-            key={post._id}
-            post={post}
-            profileAvatar={
-              post.username === user.username
-                ? user?.profileAvatar
-                : allUsers.find((user) => user.username === post.username)
-                    ?.profileAvatar
-            }
-          />
-        ))}
+        )}
+
+        {!allUsers ? (
+          <InfinitySpin width="200" color="#fff" />
+        ) : (
+          sortedPost
+            .reverse()
+            .map((post) => (
+              <PostCard
+                key={post._id}
+                post={post}
+                profileAvatar={
+                  post.username === user.username
+                    ? user?.profileAvatar
+                    : allUsers.find((user) => user.username === post.username)
+                        ?.profileAvatar
+                }
+              />
+            ))
+        )}
       </div>
-      <SuggestionTab />
+      {allUsers && <SuggestionTab />}
+
       <BottomNavbar />
     </div>
   );

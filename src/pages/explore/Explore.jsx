@@ -9,10 +9,12 @@ import { useContext, useEffect, useState } from "react";
 import { PostContext } from "../../context/PostContext";
 import { AuthContext } from "../../context/AuthContext";
 
+import { InfinitySpin } from "react-loader-spinner";
+
 export const Explore = () => {
   const { authState } = useContext(AuthContext);
   const { posts } = useContext(PostContext);
-  const [allUsers, setAllUsers] = useState([]);
+  const [allUsers, setAllUsers] = useState();
 
   const { user } = authState;
 
@@ -27,25 +29,29 @@ export const Explore = () => {
       }
     };
     getAllUsers();
-  }, [posts]);
+  }, []);
   return (
     <>
       <div className="home-main-container">
         <TopNavbar />
         <SideNavbar />
         <div className="feed-container">
-          {posts.map((post) => (
-            <PostCard
-              key={post._id}
-              post={post}
-              profileAvatar={
-                post.username === user.username
-                  ? user?.profileAvatar
-                  : allUsers.find((user) => user.username === post.username)
-                      ?.profileAvatar
-              }
-            />
-          ))}
+          {!allUsers ? (
+            <InfinitySpin width="200" color="#fff" />
+          ) : (
+            posts.map((post) => (
+              <PostCard
+                key={post._id}
+                post={post}
+                profileAvatar={
+                  post.username === user.username
+                    ? user?.profileAvatar
+                    : allUsers.find((user) => user.username === post.username)
+                        ?.profileAvatar
+                }
+              />
+            ))
+          )}
         </div>
         <SuggestionTab />
         <BottomNavbar />

@@ -7,6 +7,8 @@ import { useParams } from "react-router-dom";
 import { PostCard } from "../post-card/PostCard";
 import { FollowUnfollowContext } from "../../context/FollowUnfollowContext";
 
+import { InfinitySpin } from "react-loader-spinner";
+
 const customStyles = {
   overlay: {
     backgroundColor: "rgba(0, 0, 0, 0.70)",
@@ -55,7 +57,7 @@ export const ProfileTab = () => {
 
   const { selectedUsername } = useParams();
 
-  const [allUsers, setAllUsers] = useState([]);
+  const [allUsers, setAllUsers] = useState();
 
   const { followedUser, followUser, unfollowUser } = useContext(
     FollowUnfollowContext
@@ -66,7 +68,7 @@ export const ProfileTab = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [avatorModalOpen, setAvatorModalOpen] = useState(false);
 
-  const filteredUser = allUsers.find(
+  const filteredUser = allUsers?.find(
     (user) => user.username === selectedUsername
   );
   const userPosts = posts.filter((post) => post.username === selectedUsername);
@@ -107,17 +109,102 @@ export const ProfileTab = () => {
 
   return (
     <>
-      <div className="profile-tab-main-container">
-        <Modal
-          isOpen={modalOpen}
-          onRequestClose={() => setModalOpen(false)}
-          style={customStyles}
-          ariaHideApp={false}
-        >
-          <p>Edit Profile</p>
-          <div className="edit-user-profile-container">
-            <div className="profile-picture-edit-container">
-              <div className="edit-picture">
+      {!allUsers ? (
+        <InfinitySpin width="200" color="#fff" />
+      ) : (
+        <div>
+          <div className="profile-tab-main-container">
+            <Modal
+              isOpen={modalOpen}
+              onRequestClose={() => setModalOpen(false)}
+              style={customStyles}
+              ariaHideApp={false}
+            >
+              <p>Edit Profile</p>
+              <div className="edit-user-profile-container">
+                <div className="profile-picture-edit-container">
+                  <div className="edit-picture">
+                    <img
+                      src={
+                        filteredUser?.profileAvatar === undefined
+                          ? defaultDp
+                          : filteredUser?.profileAvatar
+                      }
+                      alt={filteredUser?.username}
+                    />
+                  </div>
+                  <div>
+                    <p>{filteredUser?.username}</p>
+                    <p onClick={() => setAvatorModalOpen(true)}>
+                      Change profile avator
+                    </p>
+                  </div>
+                </div>
+                <div className="website-edit-container">
+                  <p>Website</p>
+                  <input
+                    type="text"
+                    name="website"
+                    value={userDetails?.website}
+                    onChange={(e) =>
+                      setUserDetails((curr) => ({
+                        ...curr,
+                        website: e.target.value,
+                      }))
+                    }
+                  />
+                </div>
+                <div className="bio-edit-container">
+                  <p>Bio</p>
+                  <textarea
+                    name="bio"
+                    value={userDetails?.bio}
+                    onChange={(e) =>
+                      setUserDetails((curr) => ({
+                        ...curr,
+                        bio: e.target.value,
+                      }))
+                    }
+                    cols="3"
+                    rows="3"
+                  ></textarea>
+                </div>
+                <button className="save-button" onClick={saveButtonHandler}>
+                  Save
+                </button>
+              </div>
+
+              {/* <CreatePost close={setModalOpen} /> */}
+            </Modal>
+            <Modal
+              isOpen={avatorModalOpen}
+              onRequestClose={() => setAvatorModalOpen(false)}
+              style={customStyles}
+              ariaHideApp={false}
+            >
+              <p>Select Avator</p>
+              <div className="edit-user-profile-container">
+                <div className="profile-avator-container">
+                  {avatorDB.map((avator) => (
+                    <div
+                      key={avator}
+                      className="avator"
+                      onClick={() => setImgUrl(avator)}
+                    >
+                      <img src={avator} alt={avator} />
+                    </div>
+                  ))}
+                </div>
+                <button
+                  className="save-button"
+                  onClick={avatorSaveButtonHandler}
+                >
+                  Save
+                </button>
+              </div>
+            </Modal>
+            <div className="profile-picture-container">
+              <div className="profile-section-picture">
                 <img
                   src={
                     filteredUser?.profileAvatar === undefined
@@ -127,141 +214,68 @@ export const ProfileTab = () => {
                   alt={filteredUser?.username}
                 />
               </div>
-              <div>
-                <p>{filteredUser?.username}</p>
-                <p onClick={() => setAvatorModalOpen(true)}>
-                  Change profile avator
+            </div>
+            <div className="profile-details-container">
+              <div className="profile-username-edit-container">
+                <div>{filteredUser?.username}</div>
+                {user.username === selectedUsername ? (
+                  <div>
+                    <button onClick={() => setModalOpen(true)}>Edit</button>
+                    <button onClick={() => handleLogout()}>Logout</button>
+                  </div>
+                ) : (
+                  <div>
+                    {followedByUser() ? (
+                      <button onClick={() => unfollowUser(filteredUser._id)}>
+                        Unfollow
+                      </button>
+                    ) : (
+                      <button onClick={() => followUser(filteredUser._id)}>
+                        follow
+                      </button>
+                    )}
+                  </div>
+                )}
+              </div>
+              <div className="post-followers-following-container">
+                <p>
+                  {userPosts?.length < 2
+                    ? `${userPosts?.length} post`
+                    : `${userPosts?.length} posts`}
+                </p>
+                <p>
+                  {filteredUser?.followers?.length < 2
+                    ? `${filteredUser?.followers?.length} follower`
+                    : `${filteredUser?.followers?.length} followers`}
+                </p>
+                <p>{filteredUser?.following?.length} following</p>
+              </div>
+              <div className="profile-bio-link-container">
+                <p>{filteredUser?.bio}</p>
+                <p className="website-link">
+                  <a href={filteredUser?.website} target="blank">
+                    {filteredUser?.website?.slice(8)}
+                  </a>
                 </p>
               </div>
             </div>
-            <div className="website-edit-container">
-              <p>Website</p>
-              <input
-                type="text"
-                name="website"
-                value={userDetails?.website}
-                onChange={(e) =>
-                  setUserDetails((curr) => ({
-                    ...curr,
-                    website: e.target.value,
-                  }))
+          </div>
+          <div className="">
+            {userPosts.map((post) => (
+              <PostCard
+                key={post._id}
+                post={post}
+                profileAvatar={
+                  post.username === user.username
+                    ? user?.profileAvatar
+                    : allUsers.find((user) => user.username === post.username)
+                        ?.profileAvatar
                 }
               />
-            </div>
-            <div className="bio-edit-container">
-              <p>Bio</p>
-              <textarea
-                name="bio"
-                value={userDetails?.bio}
-                onChange={(e) =>
-                  setUserDetails((curr) => ({ ...curr, bio: e.target.value }))
-                }
-                cols="3"
-                rows="3"
-              ></textarea>
-            </div>
-            <button className="save-button" onClick={saveButtonHandler}>
-              Save
-            </button>
-          </div>
-
-          {/* <CreatePost close={setModalOpen} /> */}
-        </Modal>
-        <Modal
-          isOpen={avatorModalOpen}
-          onRequestClose={() => setAvatorModalOpen(false)}
-          style={customStyles}
-          ariaHideApp={false}
-        >
-          <p>Select Avator</p>
-          <div className="edit-user-profile-container">
-            <div className="profile-avator-container">
-              {avatorDB.map((avator) => (
-                <div
-                  key={avator}
-                  className="avator"
-                  onClick={() => setImgUrl(avator)}
-                >
-                  <img src={avator} alt={avator} />
-                </div>
-              ))}
-            </div>
-            <button className="save-button" onClick={avatorSaveButtonHandler}>
-              Save
-            </button>
-          </div>
-        </Modal>
-        <div className="profile-picture-container">
-          <div className="profile-section-picture">
-            <img
-              src={
-                filteredUser?.profileAvatar === undefined
-                  ? defaultDp
-                  : filteredUser?.profileAvatar
-              }
-              alt={filteredUser?.username}
-            />
+            ))}
           </div>
         </div>
-        <div className="profile-details-container">
-          <div className="profile-username-edit-container">
-            <div>{filteredUser?.username}</div>
-            {user.username === selectedUsername ? (
-              <div>
-                <button onClick={() => setModalOpen(true)}>Edit</button>
-                <button onClick={() => handleLogout()}>Logout</button>
-              </div>
-            ) : (
-              <div>
-                {followedByUser() ? (
-                  <button onClick={() => unfollowUser(filteredUser._id)}>
-                    Unfollow
-                  </button>
-                ) : (
-                  <button onClick={() => followUser(filteredUser._id)}>
-                    follow
-                  </button>
-                )}
-              </div>
-            )}
-          </div>
-          <div className="post-followers-following-container">
-            <p>
-              {userPosts?.length < 2
-                ? `${userPosts?.length} post`
-                : `${userPosts?.length} posts`}
-            </p>
-            <p>
-              {filteredUser?.followers?.length < 2
-                ? `${filteredUser?.followers?.length} follower`
-                : `${filteredUser?.followers?.length} followers`}
-            </p>
-            <p>{filteredUser?.following?.length} following</p>
-          </div>
-          <div className="profile-bio-link-container">
-            <p>{filteredUser?.bio}</p>
-            <p className="website-link">
-              <a href={filteredUser?.website} target="blank">
-                {filteredUser?.website?.slice(8)}
-              </a>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div className="">
-        {userPosts.map((post) => (
-          <PostCard
-            key={post._id}
-            post={post}
-            profileAvatar={
-              post.username === user.username
-                ? user?.profileAvatar
-                : allUsers.find((user) => user.username === post.username)
-                    ?.profileAvatar
-            }
-          />
-        ))}
-      </div>
+      )}
     </>
   );
 };
