@@ -61,7 +61,7 @@ export const Home = () => {
     <div className="home-main-container">
       <TopNavbar />
       <SideNavbar />
-      <div className="feed-container">
+      <div className="home-feed-container">
         {allUsers && (
           <div className="user-feed-filter-container">
             <p>{sortBy} Post</p>

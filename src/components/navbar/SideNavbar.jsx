@@ -46,7 +46,10 @@ export const SideNavbar = () => {
 
           <CreatePost close={setModalOpen} />
         </Modal>
-        <div className="side-logo-container">Sociogram</div>
+        <div className="side-logo-container">
+          <div>logo</div>
+          <span className="icon-text">Sociogram</span>
+        </div>
         <Link to="/" className="navLink">
           <div className="side-home">
             <img src="../icons/home.svg" alt="home-logo" />

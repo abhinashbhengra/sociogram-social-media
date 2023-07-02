@@ -4,7 +4,7 @@
   position: relative;
 }
 
-.feed-container {
+.home-feed-container {
   padding: 5rem 0rem;
   width: 34%;
   margin: auto;
@@ -12,6 +12,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* border: 1px solid red; */
 }
 
 .user-feed-filter-container {
@@ -49,5 +50,11 @@
     display: flex;
     height: 100vh;
     overflow-y: scroll;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .home-feed-container {
+    width: 70%;
   }
 }

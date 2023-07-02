@@ -184,6 +184,24 @@
   .side-nav-main-container {
     display: block;
   }
+  .side-home {
+    padding: 12px 20px 12px 20px;
+  }
+  .side-search-container {
+    padding: 12px 12px 12px 20px;
+  }
+  .side-explorer {
+    padding: 12px 12px 12px 20px;
+  }
+  .side-create-post {
+    padding: 12px 12px 12px 20px;
+  }
+  .side-bookmark {
+    padding: 12px 12px 12px 20px;
+  }
+  .side-profile {
+    padding: 12px 12px 12px 16px;
+  }
 }
 
 @media screen and (min-width: 1264px) {
