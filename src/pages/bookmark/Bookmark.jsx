@@ -42,7 +42,7 @@ export const Bookmark = () => {
       <div className="home-main-container">
         <TopNavbar />
         <SideNavbar />
-        <div className="feed-container">
+        <div className="bookmark-feed-container">
           {!allUsers ? (
             <InfinitySpin width="200" color="#fff" />
           ) : (
