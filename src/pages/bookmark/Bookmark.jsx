@@ -10,8 +10,10 @@ import { BookmarkContext } from "../../context/BookmarkContext";
 import { PostContext } from "../../context/PostContext";
 import { AuthContext } from "../../context/AuthContext";
 
+import { InfinitySpin } from "react-loader-spinner";
+
 export const Bookmark = () => {
-  const [allUsers, setAllUsers] = useState([]);
+  const [allUsers, setAllUsers] = useState();
   const { authState } = useContext(AuthContext);
   const { bookmark } = useContext(BookmarkContext);
   const { posts } = useContext(PostContext);
@@ -41,20 +43,26 @@ export const Bookmark = () => {
         <TopNavbar />
         <SideNavbar />
         <div className="feed-container">
-          {filteredPost?.length === 0 && <p>No Bookmarks</p>}
+          {!allUsers ? (
+            <InfinitySpin width="200" color="#fff" />
+          ) : (
+            <>
+              {filteredPost?.length === 0 && <p>No Bookmarks</p>}
 
-          {filteredPost?.map((post) => (
-            <PostCard
-              key={post._id}
-              post={post}
-              profileAvatar={
-                post.username === user.username
-                  ? user?.profileAvatar
-                  : allUsers.find((user) => user.username === post.username)
-                      ?.profileAvatar
-              }
-            />
-          ))}
+              {filteredPost?.map((post) => (
+                <PostCard
+                  key={post._id}
+                  post={post}
+                  profileAvatar={
+                    post.username === user.username
+                      ? user?.profileAvatar
+                      : allUsers.find((user) => user.username === post.username)
+                          ?.profileAvatar
+                  }
+                />
+              ))}
+            </>
+          )}
         </div>
         <SuggestionTab />
         <BottomNavbar />
