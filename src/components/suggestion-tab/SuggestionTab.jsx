@@ -7,7 +7,7 @@ import { FollowUnfollowContext } from "../../context/FollowUnfollowContext";
 export const SuggestionTab = () => {
   const { authState } = useContext(AuthContext);
   const { followedUser, followUser } = useContext(FollowUnfollowContext);
-  const [allUser, setAllUser] = useState([]);
+  const [allUser, setAllUser] = useState();
   const [updatedDetails, setUpdatedDetails] = useState();
   const { user } = authState;
   const following = updatedDetails?.following;
@@ -15,7 +15,7 @@ export const SuggestionTab = () => {
   const navigate = useNavigate();
 
   const suggestion = allUser
-    .filter(({ _id }) => _id !== updatedDetails?._id)
+    ?.filter(({ _id }) => _id !== updatedDetails?._id)
     .filter((us) => !following?.find((item) => item.username === us.username));
 
   useEffect(() => {
@@ -46,33 +46,35 @@ export const SuggestionTab = () => {
 
   return (
     <>
-      <div className="suggestion-tab-main-container">
-        <p>Suggestion for you</p>
-        {suggestion.length < 1 && <p>No suggestions</p>}
-        {suggestion.map((user) => (
-          <div className="suggestion-container" key={user._id}>
-            <div
-              className="suggestion-user-picture"
-              onClick={() => navigate(`/profile/${user.username}`)}
-            >
-              <img src={user.profileAvatar} alt={user.username} />
+      {allUser && (
+        <div className="suggestion-tab-main-container">
+          <p>Suggestion for you</p>
+          {suggestion.length < 1 && <p>No suggestions</p>}
+          {suggestion.map((user) => (
+            <div className="suggestion-container" key={user._id}>
+              <div
+                className="suggestion-user-picture"
+                onClick={() => navigate(`/profile/${user.username}`)}
+              >
+                <img src={user.profileAvatar} alt={user.username} />
+              </div>
+              <div
+                className="suggestion-user-name-username"
+                onClick={() => navigate(`/profile/${user.username}`)}
+              >
+                <div className="suggestion-user-name">{user.fullName}</div>
+                <div className="suggestion-user-username">{user.username}</div>
+              </div>
+              <div
+                className="suggestion-follow-button"
+                onClick={() => followUser(user._id)}
+              >
+                Follow
+              </div>
             </div>
-            <div
-              className="suggestion-user-name-username"
-              onClick={() => navigate(`/profile/${user.username}`)}
-            >
-              <div className="suggestion-user-name">{user.fullName}</div>
-              <div className="suggestion-user-username">{user.username}</div>
-            </div>
-            <div
-              className="suggestion-follow-button"
-              onClick={() => followUser(user._id)}
-            >
-              Follow
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </>
   );
 };
