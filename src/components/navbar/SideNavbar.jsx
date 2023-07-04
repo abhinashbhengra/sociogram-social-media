@@ -47,7 +47,7 @@ export const SideNavbar = () => {
           <CreatePost close={setModalOpen} />
         </Modal>
         <div className="side-logo-container">
-          <div>logo</div>
+          <div className="side-logo">logo</div>
           <span className="icon-text">Sociogram</span>
         </div>
         <Link to="/" className="navLink">

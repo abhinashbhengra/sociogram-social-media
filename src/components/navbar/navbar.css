@@ -208,4 +208,7 @@
   .icon-text {
     display: block;
   }
+  .side-logo {
+    display: none;
+  }
 }
