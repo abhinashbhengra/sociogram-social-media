@@ -38,13 +38,14 @@
   left: 0;
   right: 0;
   top: 0;
+  z-index: 1;
 }
 
 .bottom-nav-main-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4rem;
+  /* gap: 2px; */
 
   padding: 1.5rem 0;
 
