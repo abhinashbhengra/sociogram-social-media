@@ -110,7 +110,9 @@ export const ProfileTab = () => {
   return (
     <>
       {!allUsers ? (
-        <InfinitySpin width="200" color="#fff" />
+        <div className="loader">
+          <InfinitySpin width="200" color="#fff" />
+        </div>
       ) : (
         <div>
           <div className="profile-tab-main-container">
@@ -260,7 +262,7 @@ export const ProfileTab = () => {
               </div>
             </div>
           </div>
-          <div className="">
+          <div className="profile-feed-container">
             {userPosts.map((post) => (
               <PostCard
                 key={post._id}
