@@ -55,6 +55,6 @@
 
 @media screen and (max-width: 768px) {
   .home-feed-container {
-    width: 70%;
+    width: 100%;
   }
 }
