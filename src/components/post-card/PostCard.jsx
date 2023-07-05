@@ -161,9 +161,11 @@ export const PostCard = ({ post, profileAvatar }) => {
         </div>
         <div className="post-content-container">
           <div className="post-content">{content}</div>
-          {postImage && (
-            <img src={postImage} alt={content} className="post-image" />
-          )}
+          <div className="post-image-container">
+            {postImage && (
+              <img src={postImage} alt={content} className="post-image" />
+            )}
+          </div>
         </div>
         <div className="post-foot">
           <div className="post-like">
