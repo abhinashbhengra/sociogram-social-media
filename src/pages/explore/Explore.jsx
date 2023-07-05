@@ -37,7 +37,9 @@ export const Explore = () => {
         <SideNavbar />
         <div className="explore-feed-container">
           {!allUsers ? (
-            <InfinitySpin width="200" color="#fff" />
+            <div className="loader">
+              <InfinitySpin width="200" color="#fff" />
+            </div>
           ) : (
             posts.map((post) => (
               <PostCard
