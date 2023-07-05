@@ -22,7 +22,7 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
     backgroundColor: "#262626",
     color: "#a5a5a5",
-    width: 500,
+    width: "auto",
     height: "auto",
     overflow: "hidden",
     border: "none",
@@ -67,6 +67,7 @@ export const ProfileTab = () => {
 
   const [modalOpen, setModalOpen] = useState(false);
   const [avatorModalOpen, setAvatorModalOpen] = useState(false);
+  const [avatorSelected, setAvatorSelected] = useState(false);
 
   const filteredUser = allUsers?.find(
     (user) => user.username === selectedUsername
@@ -83,6 +84,11 @@ export const ProfileTab = () => {
   const avatorSaveButtonHandler = () => {
     setUserDetails((curr) => ({ ...curr, profileAvatar: imgUrl }));
     setAvatorModalOpen(false);
+  };
+
+  const handleImgUrl = (avator) => {
+    setImgUrl(avator);
+    setAvatorSelected(true);
   };
 
   useEffect(() => {
@@ -137,7 +143,10 @@ export const ProfileTab = () => {
                   </div>
                   <div>
                     <p>{filteredUser?.username}</p>
-                    <p onClick={() => setAvatorModalOpen(true)}>
+                    <p
+                      onClick={() => setAvatorModalOpen(true)}
+                      style={{ cursor: "pointer" }}
+                    >
                       Change profile avator
                     </p>
                   </div>
@@ -191,7 +200,7 @@ export const ProfileTab = () => {
                     <div
                       key={avator}
                       className="avator"
-                      onClick={() => setImgUrl(avator)}
+                      onClick={() => handleImgUrl(avator)}
                     >
                       <img src={avator} alt={avator} />
                     </div>
