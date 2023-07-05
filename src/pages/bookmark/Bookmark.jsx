@@ -18,6 +18,8 @@ export const Bookmark = () => {
   const { bookmark } = useContext(BookmarkContext);
   const { posts } = useContext(PostContext);
 
+  const [display, setDisplay] = useState(false);
+
   const { user } = authState;
 
   const filteredPost = posts.filter((post) =>
@@ -44,10 +46,17 @@ export const Bookmark = () => {
         <SideNavbar />
         <div className="bookmark-feed-container">
           {!allUsers ? (
-            <InfinitySpin width="200" color="#fff" />
+            <div className="loader">
+              <InfinitySpin width="200" color="#fff" />
+            </div>
           ) : (
             <>
-              {filteredPost?.length === 0 && <p>No Bookmarks</p>}
+              <div
+                className="no-bookmark-text"
+                style={{ display: bookmark.length < 1 ? "block" : "none" }}
+              >
+                {filteredPost?.length === 0 && <p>No Bookmarks</p>}
+              </div>
 
               {filteredPost?.map((post) => (
                 <PostCard

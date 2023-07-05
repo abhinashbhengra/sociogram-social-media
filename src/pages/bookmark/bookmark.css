@@ -13,6 +13,10 @@
   align-items: center;
   /* border: 1px solid red; */
 }
+.no-bookmark-text {
+  height: 60vh;
+  padding-top: 9rem;
+}
 .create-post-container {
   /* border: 0.1px solid #666666; */
   width: 100%;
@@ -58,6 +62,6 @@
 }
 @media screen and (max-width: 768px) {
   .bookmark-feed-container {
-    width: 70%;
+    width: 100%;
   }
 }
