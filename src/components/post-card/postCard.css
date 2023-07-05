@@ -5,6 +5,9 @@
   margin-bottom: 6rem;
   border-bottom: 1px solid #262626;
 }
+.modal-check {
+  border: 1px solid red;
+}
 .post-head {
   position: relative;
   /* border: 1px solid purple; */

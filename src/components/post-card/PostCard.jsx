@@ -24,7 +24,7 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
     backgroundColor: "#262626",
     color: "#a5a5a5",
-    width: 500,
+    width: "auto",
     height: "auto",
     overflow: "hidden",
     border: "none",
@@ -92,6 +92,7 @@ export const PostCard = ({ post, profileAvatar }) => {
             optionClose={setOptionOpen}
           />
         </Modal>
+
         <div className="post-head">
           <div className="user-picture">
             <img
