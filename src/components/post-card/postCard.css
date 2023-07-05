@@ -10,13 +10,15 @@
   /* border: 1px solid purple; */
   display: flex;
   gap: 1rem;
-  padding: 6px 2px;
+  padding: 6px 16px;
+  /* border: 1px solid red; */
 }
 .post-options-container {
   position: absolute;
-  right: 0;
+  right: 16px;
 
   cursor: pointer;
+  /* border: 1px solid purple; */
 }
 .post-options-container img {
   width: 20px;
@@ -57,7 +59,7 @@
 }
 
 .post-content {
-  padding: 12px 0;
+  padding: 12px 16px;
 }
 .post-image {
   width: 100%;
@@ -67,6 +69,8 @@
   display: flex;
   align-items: center;
   gap: 0.6rem;
+  padding: 0 16px;
+  /* border: 1px solid red; */
 }
 .post-like-image {
   width: 25px;
