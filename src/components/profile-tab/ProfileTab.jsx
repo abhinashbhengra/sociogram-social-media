@@ -105,7 +105,7 @@ export const ProfileTab = () => {
       }
     };
     getAllUsers();
-  }, [posts]);
+  }, [user]);
 
   return (
     <>
