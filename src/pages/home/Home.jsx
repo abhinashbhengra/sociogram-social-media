@@ -112,7 +112,9 @@ export const Home = () => {
         )}
 
         {!allUsers ? (
-          <InfinitySpin width="200" color="#fff" />
+          <div className="loader">
+            <InfinitySpin width="200" color="#fff" />
+          </div>
         ) : (
           sortedPost
             .reverse()
