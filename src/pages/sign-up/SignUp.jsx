@@ -32,7 +32,7 @@ export const SignUp = () => {
 
   return (
     <div className="signup-main-container">
-      <h1>Sociogram</h1>
+      <h1 style={{ color: "#fff" }}>Sociogram</h1>
       <form onSubmit={handleFormSubmit}>
         <div>
           <input
