@@ -55,7 +55,7 @@ export const posts = [
   {
     _id: uuid(),
     content:
-      "Went to this hangout place, Bob's in Marathalli yesterday. The ambience is real good and the mocktails are really fresh.",
+      "Participating in the NASA App Challenge hackathon was an incredibly enjoyable experience, filled with excitement and a sense of anticipation. Working alongside talented individuals who shared a passion for space exploration and technology, we collaborated, brainstormed, and overcame obstacles together. Overall, the hackathon provided a unique platform for collaboration, innovation, and learning, leaving me with new skills, connections, and a sense of accomplishment that will inspire future endeavors.",
     likes: {
       likeCount: 0,
       likedBy: [],
@@ -66,7 +66,97 @@ export const posts = [
     fullName: "Abhinash Bhengra",
     createdAt: "2022-05-11",
     postImage:
-      "https://res.cloudinary.com/dwebygldw/image/upload/v1652908952/frittr/zwpmppawiyxwthsmikyk.webp",
+      "https://ik.imagekit.io/u6itcrvxy/Posts-Image/Abhinash_Bhengra.png?updatedAt=1688886050019",
+    updatedAt: formatDate(),
+    comments: [
+      {
+        _id: uuid(),
+        comment: "Nice!",
+        fullName: "Anshaal Khanna",
+        username: "anshaal10",
+        profileAvatar: "https://picsum.photos/id/1005/150",
+        createdAt: "2022-05-11",
+        updatedAt: formatDate(),
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: uuid(),
+        comment: "Wow!",
+        fullName: "Aditya Jadhav",
+        username: "aditya_jadhav",
+        profileAvatar: "https://picsum.photos/id/100/150",
+        createdAt: "2022-05-12",
+        updatedAt: formatDate(),
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
+  },
+  {
+    _id: uuid(),
+    content:
+      "Securing a spot in the top 10 of the NASA App Challenge hackathon fills us with immense joy and pride. It is a testament to our team's hard work, innovative ideas, and technical skills. ",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+
+    username: "abhinashbhengra",
+    fullName: "Abhinash Bhengra",
+    createdAt: "2022-05-13",
+    postImage:
+      "https://ik.imagekit.io/u6itcrvxy/Posts-Image/nasa_l5tBYdNMd?updatedAt=1688887682654",
+    updatedAt: formatDate(),
+    comments: [
+      {
+        _id: uuid(),
+        comment: "Nice!",
+        fullName: "Anshaal Khanna",
+        username: "anshaal10",
+        profileAvatar: "https://picsum.photos/id/1005/150",
+        createdAt: "2022-05-11",
+        updatedAt: formatDate(),
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: uuid(),
+        comment: "Wow!",
+        fullName: "Aditya Jadhav",
+        username: "aditya_jadhav",
+        profileAvatar: "https://picsum.photos/id/100/150",
+        createdAt: "2022-05-12",
+        updatedAt: formatDate(),
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
+  },
+  {
+    _id: uuid(),
+    content:
+      "I successfully completed an e-commerce project using React.js, a JavaScript library for building user interfaces. The project involved implementing various features such as product listings, shopping cart functionality, wishlist functionality and many more, resulting in a fully functional e-commerce application. ",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+
+    username: "abhinashbhengra",
+    fullName: "Abhinash Bhengra",
+    createdAt: "2022-05-13",
+    postImage:
+      "https://ik.imagekit.io/u6itcrvxy/Posts-Image/Screenshot_2023-07-09_at_1.01.41_PM.png?updatedAt=1688887952066",
     updatedAt: formatDate(),
     comments: [
       {
