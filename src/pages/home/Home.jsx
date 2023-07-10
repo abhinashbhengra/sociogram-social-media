@@ -11,11 +11,14 @@ import { filteredPosts } from "../../utils/filters/filters";
 import { PostContext } from "../../context/PostContext";
 
 import { InfinitySpin } from "react-loader-spinner";
+import { FollowUnfollowContext } from "../../context/FollowUnfollowContext";
 
 export const Home = () => {
   const { posts } = useContext(PostContext);
   const [sortBy, setSortBy] = useState("All");
   const { authState } = useContext(AuthContext);
+  const { followedUser } = useContext(FollowUnfollowContext);
+  const [fUser, setFUser] = useState(followedUser);
   const { user } = authState;
   const { following } = user;
 
@@ -23,8 +26,14 @@ export const Home = () => {
 
   const [allUsers, setAllUsers] = useState();
 
+  const loggedInUser = allUsers?.find(
+    (allUser) => (allUser.name = user.username)
+  );
+
+  const followingUsers = loggedInUser?.following;
+
   const followingUserPost = posts?.filter((post) => {
-    return following?.some(
+    return followingUsers?.some(
       (followingUser) => followingUser?.username === post?.username
     );
   });
@@ -55,8 +64,11 @@ export const Home = () => {
       }
     };
     getAllUsers();
-  }, []);
+  }, [followedUser]);
 
+  useEffect(() => {}, [followedUser]);
+  // console.log(followedUser);
+  console.log(followingUserPost);
   return (
     <div className="home-main-container">
       <TopNavbar />

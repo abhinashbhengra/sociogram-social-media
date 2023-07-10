@@ -18,22 +18,7 @@ export const users = [
       "https://ik.imagekit.io/u6itcrvxy/Avator/ava_02.png?updatedAt=1687861494994",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    following: [
-      {
-        _id: uuid(),
-        fullName: "Aarav Gupta",
-        username: "aaravgupta",
-        profileAvatar:
-          "https://ik.imagekit.io/u6itcrvxy/Avator/ava_04.png?updatedAt=1687861494883",
-      },
-      {
-        _id: uuid(),
-        fullName: "Sneha Sharma",
-        username: "snehas",
-        profileAvatar:
-          "https://ik.imagekit.io/u6itcrvxy/Avator/ava_08.png?updatedAt=1687861495462",
-      },
-    ],
+    following: [],
     followers: [
       {
         _id: uuid(),

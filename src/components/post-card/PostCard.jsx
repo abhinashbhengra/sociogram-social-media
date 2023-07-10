@@ -51,7 +51,7 @@ export const PostCard = ({ post, profileAvatar }) => {
 
   const currentUser = allUsers.find((user) => user.username === post.username);
 
-  const followedByUser = () => followedUser.includes(currentUser?.username);
+  const followedByUser = () => followedUser?.includes(currentUser?.username);
 
   const handleFollowUser = (userId) => {
     followUser(userId);
@@ -75,6 +75,9 @@ export const PostCard = ({ post, profileAvatar }) => {
     };
     getAllUsers();
   }, []);
+
+  console.log(followedUser);
+  console.log(followedByUser());
 
   return (
     <>
