@@ -67,8 +67,6 @@ export const Home = () => {
   }, [followedUser]);
 
   useEffect(() => {}, [followedUser]);
-  // console.log(followedUser);
-  console.log(followingUserPost);
   return (
     <div className="home-main-container">
       <TopNavbar />

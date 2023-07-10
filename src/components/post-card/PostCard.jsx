@@ -76,9 +76,6 @@ export const PostCard = ({ post, profileAvatar }) => {
     getAllUsers();
   }, []);
 
-  console.log(followedUser);
-  console.log(followedByUser());
-
   return (
     <>
       <div className="post-main-container">
