@@ -128,7 +128,7 @@ export const PostCard = ({ post, profileAvatar }) => {
               onClick={() => setOptionOpen(false)}
             />
             {user.username === post.username ? (
-              <div>
+              <div className="options-edit-delete">
                 <p className="option-text" onClick={() => setModalOpen(true)}>
                   Edit
                 </p>

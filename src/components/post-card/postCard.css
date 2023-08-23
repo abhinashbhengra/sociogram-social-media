@@ -56,6 +56,8 @@
   position: absolute;
   right: 16px;
   background-color: #262626;
+  color: #fff;
+  font-size: 14px;
 
   line-height: 6px;
 }
