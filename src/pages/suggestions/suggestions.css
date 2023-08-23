@@ -1,0 +1,64 @@
+/* * {
+  color: #fff;
+} */
+.suggestion-main-container {
+  position: relative;
+}
+.suggestion-page-nav {
+  background-color: #000000;
+  border-bottom: 0.1px solid #666666;
+  padding: 0 0.5rem;
+  /* display: flex; */
+  align-items: center;
+  /* gap: 74px; */
+
+  position: fixed;
+
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 2;
+
+  font-weight: 600;
+
+  align-self: self-start;
+}
+.back-icon {
+  position: absolute;
+  top: 14px;
+}
+section {
+  margin-top: 2rem;
+  color: #fff;
+  padding: 1rem 1rem;
+}
+.discover-people {
+  color: #fff;
+  text-align: center;
+}
+.suggested-text {
+  font-weight: 600;
+}
+.profile-name-username {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.suggestions-fullname {
+  font-size: 14px;
+  font-weight: 600;
+}
+.suggestions-username {
+  font-size: 12px;
+  color: #666666;
+}
+.suggestion-follow-btn {
+  padding: 8px 2rem;
+  background-color: #1877f2;
+  color: #fff;
+  font-size: 14px;
+
+  border-radius: 4px;
+
+  cursor: pointer;
+}

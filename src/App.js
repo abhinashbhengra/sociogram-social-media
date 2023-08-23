@@ -8,6 +8,7 @@ import { RequiresAuth } from "./components/RequiresAuth";
 import { Explore } from "./pages/explore/Explore";
 import { Bookmark } from "./pages/bookmark/Bookmark";
 import { Profile } from "./pages/profile/Profile";
+import { Suggestions } from "./pages/suggestions/Suggestions";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/bookmarks" element={<Bookmark />} />
+          <Route path="/suggestions" element={<Suggestions />} />
           <Route path="/profile/:selectedUsername" element={<Profile />} />
         </Route>
         <Route path="/login" element={<Login />} />

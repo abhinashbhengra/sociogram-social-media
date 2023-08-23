@@ -10,17 +10,17 @@ export const TopNavbar = () => {
             <p style={{ color: "#fff" }}>Sociogram</p>
           </Link>
         </div>
-        <section className="search-suggestion-container">
+        <div className="search-suggestion-container">
           <div className="top-nav-search-container">
             <img src="../icons/search02.svg" alt="search" width={20} />
             <input type="text" placeholder="Search" />
           </div>
           <div className="suggestion-container">
-            <Link>
+            <Link to="/suggestions">
               <img src="../icons/user-plus.svg" alt="add-user" width={20} />
             </Link>
           </div>
-        </section>
+        </div>
       </div>
     </>
   );
