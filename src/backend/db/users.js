@@ -13,7 +13,7 @@ export const users = [
     username: "abhinashbhengra",
     password: "abhinashbhengra123",
     bio: "Versatile",
-    website: "https://abhinashbhengra.netlify.app",
+    website: "https://abhinashbhengra.vercel.app/",
     profileAvatar:
       "https://ik.imagekit.io/u6itcrvxy/Avator/ava_02.png?updatedAt=1687861494994",
     createdAt: formatDate(),
