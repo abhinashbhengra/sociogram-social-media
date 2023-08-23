@@ -228,20 +228,36 @@ export const ProfileTab = () => {
             </div>
             <div className="profile-details-container">
               <div className="profile-username-edit-container">
-                <div>{filteredUser?.username}</div>
+                <div className="username">{filteredUser?.username}</div>
                 {user.username === selectedUsername ? (
-                  <div>
-                    <button onClick={() => setModalOpen(true)}>Edit</button>
-                    <button onClick={() => handleLogout()}>Logout</button>
+                  <div className="btn-profile">
+                    <button
+                      className="edit-btn-profile"
+                      onClick={() => setModalOpen(true)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="logout-btn-profile"
+                      onClick={() => handleLogout()}
+                    >
+                      Logout
+                    </button>
                   </div>
                 ) : (
                   <div>
                     {followedByUser() ? (
-                      <button onClick={() => unfollowUser(filteredUser._id)}>
+                      <button
+                        className="follow-unfollow-btn"
+                        onClick={() => unfollowUser(filteredUser._id)}
+                      >
                         Unfollow
                       </button>
                     ) : (
-                      <button onClick={() => followUser(filteredUser._id)}>
+                      <button
+                        className="follow-unfollow-btn"
+                        onClick={() => followUser(filteredUser._id)}
+                      >
                         follow
                       </button>
                     )}
@@ -249,21 +265,43 @@ export const ProfileTab = () => {
                 )}
               </div>
               <div className="post-followers-following-container">
-                <p>
-                  {userPosts?.length < 2
-                    ? `${userPosts?.length} post`
-                    : `${userPosts?.length} posts`}
+                <p className="user-post">
+                  {userPosts?.length < 2 ? (
+                    <span>
+                      {userPosts?.length}{" "}
+                      <span className="user-post-span">post</span>
+                    </span>
+                  ) : (
+                    <span>
+                      {userPosts?.length}{" "}
+                      <span className="user-post-span">posts</span>
+                    </span>
+                  )}
                 </p>
-                <p>
-                  {filteredUser?.followers?.length < 2
-                    ? `${filteredUser?.followers?.length} follower`
-                    : `${filteredUser?.followers?.length} followers`}
+                <p className="user-follower">
+                  {filteredUser?.followers?.length < 2 ? (
+                    <span>
+                      {filteredUser?.followers?.length}{" "}
+                      <span className="user-post-span">follower</span>
+                    </span>
+                  ) : (
+                    <span>
+                      {filteredUser?.followers?.length}{" "}
+                      <span className="user-post-span">followers</span>
+                    </span>
+                  )}
                 </p>
-                <p>{filteredUser?.following?.length} following</p>
+                <p className="user-following">
+                  <span>
+                    {filteredUser?.following?.length}{" "}
+                    <span className="user-post-span">following</span>
+                  </span>
+                </p>
               </div>
               <div className="profile-bio-link-container">
                 <p>{filteredUser?.bio}</p>
                 <p className="website-link">
+                  <img src="../icons/link.svg" alt="link" width={12} />
                   <a href={filteredUser?.website} target="blank">
                     {filteredUser?.website?.slice(8)}
                   </a>

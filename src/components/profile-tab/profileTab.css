@@ -35,28 +35,39 @@
   display: flex;
   gap: 2rem;
 }
+.website-link {
+  color: #e0f1ff;
+  font-size: 14px;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.website-link:hover {
+  text-decoration: underline;
+}
 .website-link a:active {
   text-decoration: none;
-  color: #a5a5a5;
+  color: #e0f1ff;
 }
 .website-link a:link {
   text-decoration: none;
-  color: #a5a5a5;
+  color: #e0f1ff;
 }
 
 .website-link a:visited {
   text-decoration: none;
-  color: #a5a5a5;
+  color: #e0f1ff;
 }
 
 .website-link a:hover {
   text-decoration: none;
-  color: #a5a5a5;
+  color: #e0f1ff;
 }
 
 .website-link a:active {
   text-decoration: none;
-  color: #a5a5a5;
+  color: #e0f1ff;
 }
 .bio-edit-container textarea {
   height: 15px;
@@ -122,6 +133,73 @@
   margin-top: 2rem;
   align-self: flex-end;
 }
+
+.btn-profile {
+  display: flex;
+  gap: 6px;
+}
+.username {
+  color: #fff;
+  font-weight: 600;
+}
+.user-post {
+  color: #fff;
+  font-weight: 600;
+}
+.user-post-span {
+  font-weight: 400;
+}
+.user-follower {
+  color: #fff;
+  font-weight: 600;
+}
+.user-following {
+  color: #fff;
+  font-weight: 600;
+}
+.edit-btn-profile {
+  padding: 8px 16px;
+  color: #fff;
+  background-color: #363636;
+  border: none;
+  border-radius: 6px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+}
+.edit-btn-profile:hover {
+  background-color: #252525;
+}
+.logout-btn-profile {
+  padding: 8px 8px;
+  color: #ed3737;
+  background-color: #363636;
+  border: none;
+  border-radius: 6px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+}
+.logout-btn-profile:hover {
+  background-color: #252525;
+}
+.follow-unfollow-btn {
+  padding: 8px 16px;
+  color: #fff;
+  background-color: #363636;
+  border: none;
+  border-radius: 6px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+}
+.follow-unfollow-btn:hover {
+  background-color: #252525;
+}
+
 @media screen and (max-width: 768px) {
   .profile-feed-container {
     width: 100%;
