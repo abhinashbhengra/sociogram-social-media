@@ -25,6 +25,7 @@
 
 .top-nav-main-container {
   font-family: "Satisfy", cursive;
+  font-size: 22px;
   background-color: #000000;
   /* border-top: 1px solid #a8a8a8; */
   border-bottom: 0.1px solid #666666;
@@ -33,7 +34,7 @@
   align-items: center;
   justify-content: space-between;
 
-  padding: 1rem 2rem;
+  padding: 0 2rem;
 
   position: fixed;
   text-align: center;
