@@ -74,7 +74,7 @@ export const Home = () => {
       <div className="home-feed-container">
         {allUsers && (
           <div className="user-feed-filter-container">
-            <p>{sortBy} Post</p>
+            <p className="filtered-post">{sortBy} Post</p>
             <img
               src="https://ik.imagekit.io/u6itcrvxy/Social-Media-icons/filters-2-svgrepo-com__1_.svg?updatedAt=1686916215904"
               alt="filters-logo"

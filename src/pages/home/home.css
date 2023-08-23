@@ -36,6 +36,11 @@
 .user-feed-filter-container p {
   padding-left: 16px;
 }
+.filtered-post {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
 .user-feed-filter-container img {
   padding-right: 16px;
 }
@@ -45,7 +50,9 @@
   top: 10px;
   padding: 6px 34px;
   /* border: 1px solid purple; */
+  color: #fff;
   background-color: #262626;
+  font-size: 14px;
   text-align: center;
   z-index: 1;
 }
