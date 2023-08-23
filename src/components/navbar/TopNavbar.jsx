@@ -7,7 +7,7 @@ export const TopNavbar = () => {
       <div className="top-nav-main-container">
         <div className="top-nav-logo-container">
           <Link to="/" className="navLink">
-            <p style={{ color: "#a5a5a5" }}>Sociogram</p>
+            <p style={{ color: "#fff" }}>Sociogram</p>
           </Link>
         </div>
         {/* <div className="top-nav-search-container">
