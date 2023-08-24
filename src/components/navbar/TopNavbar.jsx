@@ -1,22 +1,51 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./navbar.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { SearchResult } from "../search-result/SearchResult";
+import { AuthContext } from "../../context/AuthContext";
 
 export const TopNavbar = () => {
   const [allUser, setAllUser] = useState();
   const [search, setSearch] = useState("");
+  const [searchUser, setSearchUser] = useState();
+  const { authState } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
-  let displayUser = allUser;
+  const filteredUser = allUser?.filter(
+    (user) => user.username !== authState.user.username
+  );
 
-  if (search === "") {
-    displayUser = [];
-  } else {
-    displayUser = allUser.filter((user) =>
+  // let displayUser = filteredUser;
+
+  // if (search === "") {
+  //   displayUser = [];
+  // } else {
+  //   displayUser = filteredUser.filter((user) =>
+  //     user.username.toLowerCase().includes(search.toLowerCase())
+  //   );
+  // }
+
+  const handleSearch = () => {
+    const searchedUsser = filteredUser?.filter((user) =>
       user.username.toLowerCase().includes(search.toLowerCase())
     );
-  }
+
+    setSearchUser(searchedUsser);
+
+    // setInput("");
+  };
+
+  useEffect(() => {
+    let id;
+    id = setTimeout(() => {
+      handleSearch();
+    }, 500);
+
+    return () => {
+      clearTimeout(id);
+    };
+  }, [search]);
 
   useEffect(() => {
     const getUser = async () => {
@@ -30,7 +59,8 @@ export const TopNavbar = () => {
     };
     getUser();
   }, []);
-  console.log(displayUser);
+  // console.log(filteredUser);
+  // console.log(authState);
   return (
     <>
       <div className="top-nav-main-container">
@@ -51,24 +81,15 @@ export const TopNavbar = () => {
               onChange={(e) => setSearch(e.target.value)}
             />
             {/* drop down */}
-            <div className="search-result-main-container">
-              {displayUser.map((user) => (
-                <div>
+            {search.length !== 0 && (
+              <div className="search-result-main-container">
+                {searchUser?.map((user) => (
                   <div>
-                    {/* <p>{user.profileAvatar}</p> */}
-                    <img
-                      src={user.profileAvatar}
-                      alt={user.username}
-                      width={10}
-                    />
+                    <SearchResult user={user} />
                   </div>
-                  <div>
-                    <p>{user.fullName}</p>
-                    <p>{user.username}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
           <div className="suggestion-container">
             <Link to="/suggestions">
