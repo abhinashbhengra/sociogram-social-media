@@ -16,16 +16,6 @@ export const TopNavbar = () => {
     (user) => user.username !== authState.user.username
   );
 
-  // let displayUser = filteredUser;
-
-  // if (search === "") {
-  //   displayUser = [];
-  // } else {
-  //   displayUser = filteredUser.filter((user) =>
-  //     user.username.toLowerCase().includes(search.toLowerCase())
-  //   );
-  // }
-
   const handleSearch = () => {
     const searchedUsser = filteredUser?.filter((user) =>
       user.username.toLowerCase().includes(search.toLowerCase())
@@ -34,6 +24,10 @@ export const TopNavbar = () => {
     setSearchUser(searchedUsser);
 
     // setInput("");
+  };
+
+  const clearSearch = () => {
+    setSearch("");
   };
 
   useEffect(() => {
@@ -73,7 +67,19 @@ export const TopNavbar = () => {
         </div>
         <div className="search-suggestion-container">
           <div className="top-nav-search-container">
-            <img src="../icons/search02.svg" alt="search" width={20} />
+            {search.length < 1 ? (
+              <img src="../icons/search02.svg" alt="search" width={20} />
+            ) : (
+              <img
+                src="../icons/close.svg"
+                alt="close"
+                width={18}
+                style={{ cursor: "pointer" }}
+                onClick={() => clearSearch()}
+              />
+            )}
+            {/* <img src="../icons/search02.svg" alt="search" width={20} /> */}
+
             <input
               type="text"
               placeholder="Search"
@@ -90,8 +96,8 @@ export const TopNavbar = () => {
           {search.length !== 0 && (
             <div className="search-result-main-container">
               {searchUser?.map((user) => (
-                <div>
-                  <SearchResult user={user} />
+                <div key={user.id}>
+                  <SearchResult user={user} clearSearch={clearSearch} />
                 </div>
               ))}
             </div>

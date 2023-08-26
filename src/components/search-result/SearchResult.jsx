@@ -1,31 +1,26 @@
 import "./searchResult.css";
 import { useNavigate } from "react-router-dom";
 
-export const SearchResult = ({ user }) => {
+export const SearchResult = ({ user, clearSearch }) => {
   const navigate = useNavigate();
-
+  const handleSearch = (username) => {
+    navigate(`/profile/${username}`);
+    clearSearch();
+  };
   return (
     <>
-      {/* <div className="result-main-container">
-        <div>
-          <img src={user.profileAvatar} alt="" width={20} />
-        </div>
-        <div>
-          <p>{user.fullName}</p>
-          <p>{user.username}</p>
-        </div>
-      </div> */}
+      {!user.username.length === 0 && <p>no users found!!!</p>}
       <div className="suggestion-container searched-user" key={user._id}>
         <div className="picture-username-fullname">
           <div
             className="suggestion-user-picture"
-            onClick={() => navigate(`/profile/${user.username}`)}
+            onClick={() => handleSearch(user.username)}
           >
             <img src={user.profileAvatar} alt={user.username} />
           </div>
           <div
             className="suggestion-user-name-username"
-            onClick={() => navigate(`/profile/${user.username}`)}
+            onClick={() => handleSearch(user.username)}
           >
             <div className="suggestion-user-name">{user.fullName}</div>
             <div className="suggestion-user-username">{user.username}</div>
