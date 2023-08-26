@@ -48,7 +48,7 @@ export const SideNavbar = () => {
         </Modal>
         <div className="side-logo-container">
           <div className="side-logo">logo</div>
-          <h2 className="icon-text logo-text">Sociogram</h2>
+          <h2 className="icon-text logos-text">Sociogram</h2>
         </div>
         <Link to="/" className="navLink">
           <div className="side-home">

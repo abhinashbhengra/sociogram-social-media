@@ -111,8 +111,9 @@
 }
 
 .side-nav-main-container {
+  color: #ffffff;
   height: 100vh;
-  padding: 3rem 0;
+  padding: 1rem 0;
   display: none;
 
   position: fixed;
@@ -125,12 +126,20 @@
 }
 
 .side-logo-container {
-  margin-bottom: 34px;
+  /* border: 1px solid red; */
+  margin-bottom: 24px;
   padding-left: 18px;
   display: flex;
 }
-.logo-text {
+.icon-text {
+  display: none;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+}
+.logos-text {
   font-family: "Satisfy", cursive;
+  font-size: 24px;
 }
 .side-home {
   display: flex;
@@ -227,9 +236,6 @@
 .side-profile:hover {
   background-color: #262626;
   cursor: pointer;
-}
-.icon-text {
-  display: none;
 }
 
 @media screen and (max-width: 768px) {
