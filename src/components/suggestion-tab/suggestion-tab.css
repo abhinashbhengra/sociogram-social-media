@@ -1,19 +1,29 @@
 .suggestion-tab-main-container {
+  width: 16%;
   /* border: 1px solid red; */
-  padding-right: 3rem;
+  /* padding-right: 1rem; */
 
   position: absolute;
-  right: 2rem;
+  right: 6rem;
   top: 6rem;
 
   display: none;
 }
 .suggestion-container {
+  width: 100%;
   /* border: 1px solid purple; */
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  /* gap: 1rem; */
   padding: 6px 2px;
+}
+.picture-username-fullname {
+  display: flex;
+  gap: 1rem;
+}
+.suggested-text {
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .suggestion-user-picture {
@@ -30,8 +40,18 @@
 .suggestion-user-name-username {
   cursor: pointer;
 }
+.suggestion-user-name {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+.suggestion-user-username {
+  font-size: 12px;
+}
 
 .suggestion-follow-button {
+  font-size: 12px;
+  font-weight: 600;
   color: #0095f6;
   cursor: pointer;
 }

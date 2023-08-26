@@ -80,22 +80,22 @@ export const TopNavbar = () => {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-            {/* drop down */}
-            {search.length !== 0 && (
-              <div className="search-result-main-container">
-                {searchUser?.map((user) => (
-                  <div>
-                    <SearchResult user={user} />
-                  </div>
-                ))}
-              </div>
-            )}
           </div>
           <div className="suggestion-container">
             <Link to="/suggestions">
               <img src="../icons/user-plus.svg" alt="add-user" width={20} />
             </Link>
           </div>
+          {/* drop down */}
+          {search.length !== 0 && (
+            <div className="search-result-main-container">
+              {searchUser?.map((user) => (
+                <div>
+                  <SearchResult user={user} />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </>

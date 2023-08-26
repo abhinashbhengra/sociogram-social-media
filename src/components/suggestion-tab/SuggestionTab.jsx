@@ -48,23 +48,28 @@ export const SuggestionTab = () => {
     <>
       {allUser && (
         <div className="suggestion-tab-main-container">
-          <p>Suggestion for you</p>
+          <p className="suggested-text">Suggested for you</p>
           {suggestion.length < 1 && <p>No suggestions</p>}
           {suggestion.map((user) => (
             <div className="suggestion-container" key={user._id}>
-              <div
-                className="suggestion-user-picture"
-                onClick={() => navigate(`/profile/${user.username}`)}
-              >
-                <img src={user.profileAvatar} alt={user.username} />
+              <div className="picture-username-fullname">
+                <div
+                  className="suggestion-user-picture"
+                  onClick={() => navigate(`/profile/${user.username}`)}
+                >
+                  <img src={user.profileAvatar} alt={user.username} />
+                </div>
+                <div
+                  className="suggestion-user-name-username"
+                  onClick={() => navigate(`/profile/${user.username}`)}
+                >
+                  <div className="suggestion-user-name">{user.fullName}</div>
+                  <div className="suggestion-user-username">
+                    {user.username}
+                  </div>
+                </div>
               </div>
-              <div
-                className="suggestion-user-name-username"
-                onClick={() => navigate(`/profile/${user.username}`)}
-              >
-                <div className="suggestion-user-name">{user.fullName}</div>
-                <div className="suggestion-user-username">{user.username}</div>
-              </div>
+
               <div
                 className="suggestion-follow-button"
                 onClick={() => followUser(user._id)}
