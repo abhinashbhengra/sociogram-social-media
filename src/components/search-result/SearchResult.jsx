@@ -1,11 +1,14 @@
 import "./searchResult.css";
 import { useNavigate } from "react-router-dom";
 
-export const SearchResult = ({ user, clearSearch }) => {
+export const SearchResult = ({ user, clearSearch, close }) => {
   const navigate = useNavigate();
   const handleSearch = (username) => {
     navigate(`/profile/${username}`);
     clearSearch();
+    if (close) {
+      close();
+    }
   };
   return (
     <>

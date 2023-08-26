@@ -2,9 +2,10 @@ import "./navbar.css";
 
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { CreatePost } from "../create-post/CreatePost";
 import { AuthContext } from "../../context/AuthContext";
+import { SearchModal } from "../search-modal/Search";
 
 const customStyles = {
   overlay: {
@@ -25,16 +26,37 @@ const customStyles = {
     border: "none",
   },
 };
+const customStylesSearch = {
+  overlay: {
+    backgroundColor: "rgba(0, 0, 0, 0.70)",
+  },
+  content: {
+    top: "14%",
+    left: "10%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    // transform: "translate(-50%, -50%)",
+    backgroundColor: "black",
+    color: "#a5a5a5",
+    width: 500,
+    height: "min-content",
+    overflow: "scroll",
+    border: "none",
+  },
+};
 const defaultDp =
   "https://ik.imagekit.io/u6itcrvxy/Social-Media-icons/user-circle-svgrepo-com.svg?updatedAt=1688209997484";
 
 export const SideNavbar = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpenSearch, setModalOpenSearch] = useState(false);
   const { authState } = useContext(AuthContext);
   const { user } = authState;
 
   return (
-    <>
+    <div className="side-nav">
+      <div>{/* <SearchModal className="search-modal" /> */}</div>
       <div className="side-nav-main-container">
         <Modal
           isOpen={modalOpen}
@@ -46,6 +68,15 @@ export const SideNavbar = () => {
 
           <CreatePost close={setModalOpen} />
         </Modal>
+        <Modal
+          isOpen={modalOpenSearch}
+          onRequestClose={() => setModalOpenSearch(false)}
+          style={customStylesSearch}
+          ariaHideApp={false}
+        >
+          <p>Search</p>
+          <SearchModal close={setModalOpenSearch} />
+        </Modal>
         <div className="side-logo-container">
           <div className="side-logo">logo</div>
           <h2 className="icon-text logos-text">Sociogram</h2>
@@ -56,7 +87,10 @@ export const SideNavbar = () => {
             <span className="icon-text">Home</span>
           </div>
         </Link>
-        <div className="side-search-container">
+        <div
+          className="side-search-container"
+          onClick={() => setModalOpenSearch(true)}
+        >
           <img src="../icons/search.svg" alt="search-logo" />
           <span className="icon-text">Search</span>
         </div>
@@ -93,6 +127,6 @@ export const SideNavbar = () => {
           </div>
         </Link>
       </div>
-    </>
+    </div>
   );
 };

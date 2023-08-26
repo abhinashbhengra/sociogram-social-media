@@ -100,6 +100,7 @@
   padding: 1.5rem auto;
 
   position: fixed;
+
   text-align: center;
   left: 0;
   right: 0;
@@ -110,6 +111,9 @@
   /* border: 1px solid red; */
 }
 
+.side-nav {
+  position: relative;
+}
 .side-nav-main-container {
   color: #ffffff;
   height: 100vh;
