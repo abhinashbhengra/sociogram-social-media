@@ -1,4 +1,10 @@
-export const authInitial = { user: "", token: "" };
+const localToken = localStorage.getItem("token");
+const localUser = JSON.parse(localStorage.getItem("user"));
+
+export const authInitial = {
+  user: localUser !== null ? localUser : "",
+  token: localToken !== null ? localToken : "",
+};
 
 export const authReducer = (state, action) => {
   switch (action.type) {
@@ -13,7 +19,10 @@ export const authReducer = (state, action) => {
         token: action.payload.token,
       };
     case "LOGOUT":
-      return authInitial;
+      return {
+        user: "",
+        token: "",
+      };
 
     case "EDIT":
       return {

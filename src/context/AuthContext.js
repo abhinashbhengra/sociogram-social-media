@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 import { authInitial, authReducer } from "../reducers/authReducers";
 import {
   editUser,
@@ -17,6 +17,8 @@ export const AuthProvider = ({ children }) => {
 
   const handleLogin = async (user) => {
     const response = await login(user);
+    localStorage.setItem("token", response.encodedToken);
+    localStorage.setItem("user", JSON.stringify(response.foundUser));
     authDispatch({
       type: "LOGIN",
       payload: {
@@ -33,6 +35,7 @@ export const AuthProvider = ({ children }) => {
 
   const handleSignup = async (user) => {
     const response = await signup(user);
+    window.localStorage.setItem("token", JSON.stringify(response.encodedToken));
     authDispatch({
       type: "SIGNUP",
       payload: {
@@ -44,6 +47,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     authDispatch({ type: "LOGOUT" });
   };
 
@@ -64,5 +69,7 @@ export const AuthProvider = ({ children }) => {
     handleLogout,
     handleEdit,
   };
+
+  // console.log(authState);
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
